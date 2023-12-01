@@ -8,3 +8,4 @@ C:\Users\HP\Desktop\WindowsFormsApp1\WindowsFormsApp3\bin\Debug\WindowsFormsApp3
 C:\Users\HP\Desktop\WindowsFormsApp1\WindowsFormsApp3\bin\Debug\WindowsFormsApp3.pdb
 C:\Users\HP\Desktop\WindowsFormsApp1\WindowsFormsApp3\obj\Debug\WindowsFormsApp3.exe
 C:\Users\HP\Desktop\WindowsFormsApp1\WindowsFormsApp3\obj\Debug\WindowsFormsApp3.pdb
+C:\Users\HP\Desktop\WindowsFormsApp1\WindowsFormsApp3\obj\Debug\WindowsFormsApp3.Form2.resources
