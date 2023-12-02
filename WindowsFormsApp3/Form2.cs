@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApp3.Models;
+using WindowsFormsApp3.Services;
 
 namespace WindowsFormsApp3
 {
@@ -30,8 +31,14 @@ namespace WindowsFormsApp3
         {
             if (_appUser != null)
             {
-                label1.Text = _appUser.Username;
+                username.Text = _appUser.Username;
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Form3 form3 = new Form3();
+            form3.Show();
         }
     }
 }
