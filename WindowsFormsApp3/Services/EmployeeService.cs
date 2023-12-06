@@ -1,18 +1,20 @@
 ﻿using Business.Interfaces;
 using DataAccess;
 using DataAccess.Repositories;
-using Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
+using WindowsFormsApp3;
+using WindowsFormsApp3.Models;
 
 namespace Business.Services
 {
-    public class EmployeeService : IEmployee 
+    public class EmployeeService
     {
-     
+
         private readonly EmployeeRepository employeeRepository;
         private readonly DepartmentRepository departmentReposity;
         public EmployeeService()
@@ -33,40 +35,40 @@ namespace Business.Services
                     }
                     else
                     {
-                        Console.WriteLine("There is no such department ");
+                        MessageBox.Show("There is no such department ");
                         return false;
                     }
-                    
-                    if (filtered.MemberCount <= filtered.Capasity)
+
+                    if (filtered.MemberCount <= filtered.Capacity)
                     {
                         return employeeRepository.Create(employee);
                     }
                     else
                     {
-                        Console.WriteLine("You exceeded the capacity limit");
+                        MessageBox.Show("You exceeded the capacity limit");
                         return false;
                     }
-                    
+
                 }
                 else
                 {
-                    Console.WriteLine("There is already a employee with that name and surname");
+                    MessageBox.Show("There is already a employee with that name and surname");
                     return false;
                 }
-                
+
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                throw;
+                throw ex;
             }
 
         }
-        public bool Delete(string name)
+        public bool Delete(int id)
         {
             try
             {
-                Employee deletedEmployee = employeeRepository.Get(emp => emp.Name.ToLower() == name.ToLower());
+                Employee deletedEmployee = employeeRepository.Get(emp => emp.EmployeeId == id);
                 Department department = departmentReposity.Get(dep => dep.Id == deletedEmployee.DepartmentId);
                 if (deletedEmployee != null)
                 {
@@ -75,45 +77,44 @@ namespace Business.Services
                 }
                 return false;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
-            } 
+                throw ex;
+            }
         }
-       
-        public List<Employee> GetAll(Predicate<Employee>predicate = null)
+
+        public List<Employee> GetAll(Func<Employee,bool> predicate = null)
         {
             return employeeRepository.GetAll(predicate);
         }
-        public List<Employee> GetAllByAge(int age)
-        {
-            return employeeRepository.GetAll(emp => emp.Age == age);
-        }
-        public Employee GetById(int id)
-        {
-            return employeeRepository.Get(emp => emp.Id == id);
-        }
-        public Employee GetByName(string name)
-        {
-            return employeeRepository.Get(emp => emp.Name == name);
-        }
-        public List<Employee> GetAllByDepartmentId(int id)
-        {
-            return employeeRepository.GetAll(emp => emp.DepartmentId == id);
-        }
-        public List<Employee> SearchMethodforEmployeesByNameOrSurname(Predicate<Employee> predicate)
-        {
-            return employeeRepository.GetAll(predicate);
-        }
+        //public List<Employee> GetAllByAge(int age)
+        //{
+        //    return employeeRepository.GetAll(emp => emp.Age == age);
+        //}
+        //public Employee GetById(int id)
+        //{
+        //    return employeeRepository.Get(emp => emp.EmployeeId == id);
+        //}
+        //public Employee GetByName(string name)
+        //{
+        //    return employeeRepository.Get(emp => emp.Name == name);
+        //}
+        //public List<Employee> GetAllByDepartmentId(int id)
+        //{
+        //    return employeeRepository.GetAll(emp => emp.DepartmentId == id);
+        //}
+        //public List<Employee> SearchMethodforEmployeesByNameOrSurname(Predicate<Employee> predicate)
+        //{
+        //    return employeeRepository.GetAll(predicate);
+        //}
 
-        public bool Update(string name, Employee employee)
+        public bool Update(int id, Employee employee)
         {
             try
             {
-                Employee filtered = employeeRepository.Get(emp => emp.Name.ToLower() == name.ToLower());
+                Employee filtered = employeeRepository.Get(emp => emp.EmployeeId == id);
                 Department department = departmentReposity.Get(dep => dep.Id == filtered.DepartmentId);
-               
+
                 if (filtered.DepartmentId != employee.DepartmentId)
                 {
                     Department department1 = departmentReposity.Get(dep => dep.Id == employee.DepartmentId);
@@ -137,26 +138,26 @@ namespace Business.Services
                         }
                         if (employee.DepartmentId != 0)
                         {
-                            if (department1.MemberCount + 1 <= department1.Capasity)
+                            if (department1.MemberCount + 1 <= department1.Capacity)
                             {
                                 department.MemberCount--;
                                 department1.MemberCount++;
-                                
+
                                 filtered.DepartmentId = employee.DepartmentId;
                             }
                             else
                             {
-                                Console.WriteLine("Errorr");
+                                MessageBox.Show("There isn't enough place in this department");
                                 return false;
                             }
-                            
+
                         }
                         employeeRepository.Update(filtered);
                         return true;
 
                     }
                     return false;
-                    
+
                 }
                 else
                 {
@@ -179,19 +180,19 @@ namespace Business.Services
                     employeeRepository.Update(filtered);
                     return true;
                 }
-                
 
-                    
-                
-               
+
+
+
+
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
-           
-           
-        } 
-      
+
+
+        }
+
     }
 }

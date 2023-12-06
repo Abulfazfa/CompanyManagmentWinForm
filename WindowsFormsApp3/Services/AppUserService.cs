@@ -1,5 +1,4 @@
 ﻿using DataAccess.Repositories;
-using Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +18,7 @@ namespace WindowsFormsApp3.Services
             appUserRepository = new AppUserRepository();
         }
 
-        public AppUser GetByName(string name)
+        public User GetByName(string name)
         {
             return appUserRepository.Get(emp => emp.Username == name);
         }

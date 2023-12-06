@@ -1,5 +1,4 @@
 ﻿using DataAccess;
-using Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -12,12 +11,8 @@ namespace WindowsFormsApp3.Repositories
 {
     public class AppUserRepository
     {
-        private readonly DBContext dbContext;
+        //private readonly Entities dbContext = new Entities();
 
-        public AppUserRepository()
-        {
-            dbContext = new DBContext();
-        }
 
         //public bool Create(Department obj)
         //{
@@ -49,43 +44,35 @@ namespace WindowsFormsApp3.Repositories
         //    }
         //}
 
-        public AppUser Get(Predicate<AppUser> predicate)
+        public User Get(Predicate<User> predicate)
         {
             try
             {
-                List<AppUser> appUsers = GetAll();
+                List<User> appUsers = GetAll();
                 return appUsers.Find(predicate);
             }
             catch (Exception ex)
             {
-                // Handle exception or log the error
                 throw ex;
             }
         }
 
-        public List<AppUser> GetAll(Predicate<AppUser> predicate = null)
+        public List<User> GetAll(Func<User, bool> predicate = null)
         {
             try
             {
-                string query = "SELECT * FROM Users";
-                DataTable table = dbContext.ExecuteQuery(query);
-                List<AppUser> appUsers = new List<AppUser>();
-
-                foreach (DataRow row in table.Rows)
+                SpotifyEntities1 Entities = new SpotifyEntities1();
+                if (predicate != null)
                 {
-                    appUsers.Add(new AppUser
-                    {
-                        Id = Convert.ToInt32(row["Id"]),
-                        Username = row["Username"].ToString(),
-                        Password = row["Password"].ToString()
-                    });
+                    return Entities.Users.Where(predicate).ToList();
                 }
-
-                return predicate == null ? appUsers : appUsers.FindAll(predicate);
+                else
+                {
+                    return Entities.Users.ToList();
+                }
             }
             catch (Exception ex)
             {
-                // Handle exception or log the error
                 throw ex;
             }
         }

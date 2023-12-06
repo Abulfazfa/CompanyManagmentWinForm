@@ -38,7 +38,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label1.Location = new System.Drawing.Point(255, 29);
+            this.label1.Location = new System.Drawing.Point(69, 29);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(95, 25);
             this.label1.TabIndex = 0;
@@ -48,7 +48,7 @@
             // 
             this.username.AutoSize = true;
             this.username.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.username.Location = new System.Drawing.Point(356, 31);
+            this.username.Location = new System.Drawing.Point(201, 31);
             this.username.Name = "username";
             this.username.Size = new System.Drawing.Size(98, 24);
             this.username.TabIndex = 1;
@@ -56,7 +56,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(205, 148);
+            this.button1.Location = new System.Drawing.Point(57, 113);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(107, 60);
             this.button1.TabIndex = 2;
@@ -66,18 +66,19 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(430, 148);
+            this.button2.Location = new System.Drawing.Point(205, 113);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(98, 60);
             this.button2.TabIndex = 3;
             this.button2.Text = "Employees";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(388, 255);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.username);

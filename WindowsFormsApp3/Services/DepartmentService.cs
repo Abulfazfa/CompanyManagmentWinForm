@@ -1,6 +1,5 @@
 ﻿using Business.Interfaces;
 using DataAccess.Repositories;
-using Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using DataAccess.Repositories;
+using WindowsFormsApp3.Models;
 
 namespace Business.Services
 {
@@ -53,9 +53,9 @@ namespace Business.Services
                         {
                             filtereddepartment.Name = department.Name;
                         }
-                        if (department.Capasity != 0)
+                        if (department.Capacity != 0)
                         {
-                            filtereddepartment.Capasity = department.Capasity;
+                            filtereddepartment.Capacity = department.Capacity;
                         }
 
                         departmentReposity.Update(filtereddepartment);
@@ -66,9 +66,9 @@ namespace Business.Services
                 }
                 else
                 {
-                    if (department.Capasity != 0)
+                    if (department.Capacity != 0)
                     {
-                        filtereddepartment.Capasity = department.Capasity;
+                        filtereddepartment.Capacity = department.Capacity;
                     }
 
                     departmentReposity.Update(filtereddepartment);
@@ -111,7 +111,7 @@ namespace Business.Services
         {
             return departmentReposity.GetAll();
         }
-        public List<Department> SearchMethodforDepartments(Predicate<Department> predicate)
+        public List<Department> SearchMethodforDepartments(Func<Department, bool> predicate)
         {
             return departmentReposity.GetAll(predicate);
         }

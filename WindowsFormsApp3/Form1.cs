@@ -31,11 +31,8 @@ namespace WindowsFormsApp3
             var appUser = _appUserService.GetByName(username);
             if (appUser != null)
             {
-                if (appUser.Password == password)
-                {
-                    Form2 form2 = new Form2(appUser);
-                    form2.Show();
-                };
+                Form2 form2 = new Form2(appUser);
+                form2.Show();
             }
             
         }

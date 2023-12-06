@@ -1,32 +1,32 @@
 ﻿using DataAccess;
-using Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
+using WindowsFormsApp3;
+using WindowsFormsApp3.Models;
 
 namespace DataAccess.Repositories
 {
     public class EmployeeRepository
     {
-        private readonly DBContext dbContext;
+        private readonly SpotifyEntities1 dbContext;
 
         public EmployeeRepository()
         {
-            dbContext = new DBContext();
+            dbContext = new SpotifyEntities1();
         }
 
         public bool Create(Employee obj)
         {
             try
             {
-                string query = $"INSERT INTO Employees (Name, Surname, Address, Age, DepartmentId) " +
-                               $"VALUES ('{obj.Name}', '{obj.Surname}', '{obj.Address}', {obj.Age}, {obj.DepartmentId})";
-                int rowsAffected = dbContext.ExecuteNonQuery(query);
-                return rowsAffected > 0;
+                dbContext.Employees.Add(obj);
+                dbContext.SaveChanges();
+                return true;
             }
             catch (Exception ex)
             {
-                // Handle exception or log the error
                 throw ex;
             }
         }
@@ -35,13 +35,12 @@ namespace DataAccess.Repositories
         {
             try
             {
-                string query = $"DELETE FROM Employees WHERE EmployeeId = {obj.Id}";
-                int rowsAffected = dbContext.ExecuteNonQuery(query);
-                return rowsAffected > 0;
+                dbContext.Employees.Remove(obj);
+                dbContext.SaveChanges();
+                return true;
             }
             catch (Exception ex)
             {
-                // Handle exception or log the error
                 throw ex;
             }
         }
@@ -55,7 +54,6 @@ namespace DataAccess.Repositories
             }
             catch (Exception ex)
             {
-                // Handle exception or log the error
                 throw ex;
             }
         }
@@ -64,46 +62,32 @@ namespace DataAccess.Repositories
         {
             try
             {
-                string query = $"UPDATE Employees SET Name = '{obj.Name}', Surname = '{obj.Surname}', " +
-                               $"Address = '{obj.Address}', Age = {obj.Age}, DepartmentId = {obj.DepartmentId} " +
-                               $"WHERE EmployeeId = {obj.Id}";
-
-                int rowsAffected = dbContext.ExecuteNonQuery(query);
-                return rowsAffected > 0;
+                var existEmployee = dbContext.Employees.FirstOrDefault(e => e.EmployeeId == obj.EmployeeId);
+                existEmployee = obj;
+                dbContext.SaveChanges();
+                return true;
             }
             catch (Exception ex)
             {
-                // Handle exception or log the error
                 throw ex;
             }
         }
 
-        public List<Employee> GetAll(Predicate<Employee> predicate = null)
+        public List<Employee> GetAll(Func<Employee, bool> predicate = null)
         {
             try
             {
-                string query = "SELECT * FROM Employees";
-                DataTable result = dbContext.ExecuteQuery(query);
-                List<Employee> employees = new List<Employee>();
-
-                foreach (DataRow row in result.Rows)
+                if (predicate != null)
                 {
-                    Employee employee = new Employee
-                    {
-                        Id = Convert.ToInt32(row["EmployeeId"]),
-                        Name = row["Name"].ToString(),
-                        Surname = row["Surname"].ToString(),
-                        Address = row["Address"].ToString(),
-                        Age = Convert.ToInt32(row["Age"]),
-                        DepartmentId = Convert.ToInt32(row["DepartmentId"])
-                    };
-                    employees.Add(employee);
+                    return dbContext.Employees.Where(predicate).ToList();
                 }
-                return employees;
+                else
+                {
+                    return dbContext.Employees.ToList();
+                }
             }
             catch (Exception ex)
             {
-                // Handle exception or log the error
                 throw ex;
             }
         }

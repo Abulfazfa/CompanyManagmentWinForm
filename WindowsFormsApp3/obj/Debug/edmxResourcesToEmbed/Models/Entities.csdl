@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CompanyModels" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Command">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Username" Type="String" MaxLength="23" FixedLength="false" Unicode="false" />
+    <Property Name="ApplyDate" Type="DateTime" Precision="3" />
+    <Property Name="UsedFor" Type="String" MaxLength="23" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Department">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="23" FixedLength="false" Unicode="false" />
+    <Property Name="Capacity" Type="Int32" />
+    <Property Name="MemberCount" Type="Int32" />
+    <NavigationProperty Name="Employees" Relationship="Self.FK__Employees__Depar__5441852A" FromRole="Departments" ToRole="Employees" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="EmployeeId" />
+    </Key>
+    <Property Name="EmployeeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Surname" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Address" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Age" Type="Int32" />
+    <Property Name="DepartmentId" Type="Int32" />
+    <Property Name="CreatingTime" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Department" Relationship="Self.FK__Employees__Depar__5441852A" FromRole="Employees" ToRole="Departments" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Username" Type="String" MaxLength="23" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="23" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="FK__Employees__Depar__5441852A">
+    <End Role="Departments" Type="Self.Department" Multiplicity="0..1" />
+    <End Role="Employees" Type="Self.Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Departments">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Employees">
+        <PropertyRef Name="DepartmentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Commands" EntityType="Self.Command" />
+    <EntitySet Name="Departments" EntityType="Self.Department" />
+    <EntitySet Name="Employees" EntityType="Self.Employee" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <AssociationSet Name="FK__Employees__Depar__5441852A" Association="Self.FK__Employees__Depar__5441852A">
+      <End Role="Departments" EntitySet="Departments" />
+      <End Role="Employees" EntitySet="Employees" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -14,13 +14,13 @@ namespace WindowsFormsApp3
 {
     public partial class Form2 : Form
     {
-        private readonly AppUser _appUser;
+        private readonly User _appUser;
 
         public Form2()
         {
             InitializeComponent();
         }
-        public Form2(AppUser appUser)
+        public Form2(User appUser)
         {
             InitializeComponent();
             _appUser = appUser;
@@ -39,6 +39,12 @@ namespace WindowsFormsApp3
         {
             Form3 form3 = new Form3();
             form3.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Form4 form4 = new Form4();
+            form4.Show();
         }
     }
 }

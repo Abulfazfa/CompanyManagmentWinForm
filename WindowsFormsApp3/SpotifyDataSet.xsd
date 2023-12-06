@@ -4,12 +4,12 @@
     <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
       <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
         <Connections>
-          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="SpotifyConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="SpotifyConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.WindowsFormsApp3.Properties.Settings.GlobalReference.Default.SpotifyConnectionString" Provider="System.Data.SqlClient" />
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="Entities" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="Entities (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.WindowsFormsApp3.Properties.Settings.GlobalReference.Default.Entities" Provider="System.Data.SqlClient" />
         </Connections>
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DepartmentsTableAdapter" GeneratorDataComponentClassName="DepartmentsTableAdapter" Name="Departments" UserDataComponentName="DepartmentsTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="SpotifyConnectionString (Settings)" DbObjectName="Spotify.dbo.Departments" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="Entities (Settings)" DbObjectName="Spotify.dbo.Departments" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>DELETE FROM [dbo].[Departments] WHERE (([Id] = @Original_Id) AND ((@IsNull_Name = 1 AND [Name] IS NULL) OR ([Name] = @Original_Name)) AND ((@IsNull_Capacity = 1 AND [Capacity] IS NULL) OR ([Capacity] = @Original_Capacity)) AND ((@IsNull_MemberCount = 1 AND [MemberCount] IS NULL) OR ([MemberCount] = @Original_MemberCount)))</CommandText>
@@ -75,22 +75,22 @@ SELECT Id, Name, Capacity, MemberCount FROM Departments WHERE (Id = @Id)</Comman
       </DataSource>
     </xs:appinfo>
   </xs:annotation>
-  <xs:element name="SpotifyDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_UserDSName="SpotifyDataSet" msprop:Generator_DataSetName="SpotifyDataSet">
+  <xs:element name="SpotifyDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="SpotifyDataSet" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="SpotifyDataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Departments" msprop:Generator_RowEvHandlerName="DepartmentsRowChangeEventHandler" msprop:Generator_RowDeletedName="DepartmentsRowDeleted" msprop:Generator_RowDeletingName="DepartmentsRowDeleting" msprop:Generator_RowEvArgName="DepartmentsRowChangeEvent" msprop:Generator_TablePropName="Departments" msprop:Generator_RowChangedName="DepartmentsRowChanged" msprop:Generator_RowChangingName="DepartmentsRowChanging" msprop:Generator_TableClassName="DepartmentsDataTable" msprop:Generator_RowClassName="DepartmentsRow" msprop:Generator_TableVarName="tableDepartments" msprop:Generator_UserTableName="Departments">
+        <xs:element name="Departments" msprop:Generator_RowClassName="DepartmentsRow" msprop:Generator_RowEvHandlerName="DepartmentsRowChangeEventHandler" msprop:Generator_RowDeletedName="DepartmentsRowDeleted" msprop:Generator_RowDeletingName="DepartmentsRowDeleting" msprop:Generator_RowEvArgName="DepartmentsRowChangeEvent" msprop:Generator_TablePropName="Departments" msprop:Generator_RowChangedName="DepartmentsRowChanged" msprop:Generator_UserTableName="Departments" msprop:Generator_RowChangingName="DepartmentsRowChanging" msprop:Generator_TableClassName="DepartmentsDataTable" msprop:Generator_TableVarName="tableDepartments">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="Id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_UserColumnName="Id" type="xs:int" />
-              <xs:element name="Name" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_UserColumnName="Name" minOccurs="0">
+              <xs:element name="Id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_UserColumnName="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnVarNameInTable="columnId" type="xs:int" />
+              <xs:element name="Name" msprop:Generator_UserColumnName="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnVarNameInTable="columnName" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="23" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Capacity" msprop:Generator_ColumnPropNameInRow="Capacity" msprop:Generator_ColumnPropNameInTable="CapacityColumn" msprop:Generator_ColumnVarNameInTable="columnCapacity" msprop:Generator_UserColumnName="Capacity" type="xs:int" minOccurs="0" />
-              <xs:element name="MemberCount" msprop:Generator_ColumnPropNameInRow="MemberCount" msprop:Generator_ColumnPropNameInTable="MemberCountColumn" msprop:Generator_ColumnVarNameInTable="columnMemberCount" msprop:Generator_UserColumnName="MemberCount" type="xs:int" minOccurs="0" />
+              <xs:element name="Capacity" msprop:Generator_UserColumnName="Capacity" msprop:Generator_ColumnPropNameInTable="CapacityColumn" msprop:Generator_ColumnPropNameInRow="Capacity" msprop:Generator_ColumnVarNameInTable="columnCapacity" type="xs:int" minOccurs="0" />
+              <xs:element name="MemberCount" msprop:Generator_UserColumnName="MemberCount" msprop:Generator_ColumnPropNameInTable="MemberCountColumn" msprop:Generator_ColumnPropNameInRow="MemberCount" msprop:Generator_ColumnVarNameInTable="columnMemberCount" type="xs:int" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

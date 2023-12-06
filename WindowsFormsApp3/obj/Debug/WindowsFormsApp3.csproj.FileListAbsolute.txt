@@ -10,3 +10,9 @@ C:\Users\HP\Desktop\WindowsFormsApp1\WindowsFormsApp3\obj\Debug\WindowsFormsApp3
 C:\Users\HP\Desktop\WindowsFormsApp1\WindowsFormsApp3\obj\Debug\WindowsFormsApp3.pdb
 C:\Users\HP\Desktop\WindowsFormsApp1\WindowsFormsApp3\obj\Debug\WindowsFormsApp3.Form2.resources
 C:\Users\HP\Desktop\WindowsFormsApp1\WindowsFormsApp3\obj\Debug\WindowsFormsApp3.Form3.resources
+C:\Users\HP\Desktop\WindowsFormsApp1\WindowsFormsApp3\bin\Debug\EntityFramework.dll
+C:\Users\HP\Desktop\WindowsFormsApp1\WindowsFormsApp3\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\HP\Desktop\WindowsFormsApp1\WindowsFormsApp3\bin\Debug\EntityFramework.xml
+C:\Users\HP\Desktop\WindowsFormsApp1\WindowsFormsApp3\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\HP\Desktop\WindowsFormsApp1\WindowsFormsApp3\obj\Debug\WindowsFormsApp3.csproj.CopyComplete
+C:\Users\HP\Desktop\WindowsFormsApp1\WindowsFormsApp3\obj\Debug\WindowsFormsApp3.Form4.resources

@@ -1,31 +1,26 @@
-﻿using Domain.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using WindowsFormsApp3.Models;
 
 namespace DataAccess.Repositories
 {
     public class DepartmentRepository
     {
-        private readonly DBContext dbContext;
+        private readonly SpotifyEntities1 dbContext = new SpotifyEntities1();
 
-        public DepartmentRepository()
-        {
-            dbContext = new DBContext();
-        }
+        
 
         public bool Create(Department obj)
         {
             try
             {
-                string query = $"INSERT INTO Departments (Name) VALUES ('{obj.Name}')";
-                int rowsAffected = dbContext.ExecuteNonQuery(query);
-                return rowsAffected > 0;
+                dbContext.Departments.Add(obj);
+                return true;
             }
             catch (Exception ex)
             {
-                // Handle exception or log the error
                 throw ex;
             }
         }
@@ -34,13 +29,11 @@ namespace DataAccess.Repositories
         {
             try
             {
-                string query = $"DELETE FROM Departments WHERE Id = {obj.Id}";
-                int rowsAffected = dbContext.ExecuteNonQuery(query);
-                return rowsAffected > 0;
+                dbContext.Departments.Remove(obj);
+                return true;
             }
             catch (Exception ex)
             {
-                // Handle exception or log the error
                 throw ex;
             }
         }
@@ -54,33 +47,25 @@ namespace DataAccess.Repositories
             }
             catch (Exception ex)
             {
-                // Handle exception or log the error
                 throw ex;
             }
         }
 
-        public List<Department> GetAll(Predicate<Department> predicate = null)
+        public List<Department> GetAll(Func<Department, bool> predicate = null)
         {
             try
             {
-                string query = "SELECT * FROM Departments";
-                DataTable table = dbContext.ExecuteQuery(query);
-                List<Department> departments = new List<Department>();
-
-                foreach (DataRow row in table.Rows)
+                if (predicate != null)
                 {
-                    departments.Add(new Department
-                    {
-                        Id = Convert.ToInt32(row["Id"]),
-                        Name = row["Name"].ToString()
-                    });
+                    return dbContext.Departments.Where(predicate).ToList();
                 }
-
-                return predicate == null ? departments : departments.FindAll(predicate);
+                else
+                {
+                    return dbContext.Departments.ToList();
+                }
             }
             catch (Exception ex)
             {
-                // Handle exception or log the error
                 throw ex;
             }
         }
@@ -89,13 +74,13 @@ namespace DataAccess.Repositories
         {
             try
             {
-                string query = $"UPDATE Departments SET Name = '{obj.Name}' WHERE Id = {obj.Id}";
-                int rowsAffected = dbContext.ExecuteNonQuery(query);
-                return rowsAffected > 0;
+                var existDepartment = dbContext.Departments.FirstOrDefault(e => e.Id == obj.Id);
+                existDepartment = obj;
+                dbContext.SaveChanges();
+                return true;
             }
             catch (Exception ex)
             {
-                // Handle exception or log the error
                 throw ex;
             }
         }
