@@ -17,6 +17,7 @@ namespace DataAccess.Repositories
             try
             {
                 dbContext.Departments.Add(obj);
+                dbContext.SaveChanges();
                 return true;
             }
             catch (Exception ex)
@@ -30,6 +31,7 @@ namespace DataAccess.Repositories
             try
             {
                 dbContext.Departments.Remove(obj);
+                dbContext.SaveChanges();
                 return true;
             }
             catch (Exception ex)

@@ -10,8 +10,8 @@ namespace Business.Interfaces
     public interface IDepartment
     {
         bool Create(Department department);
-        bool Update(string name, Department department);
-        bool Delete(string name);
+        bool Update(int id, Department department);
+        bool Delete(int id);
         Department GetById(int id);
         List<Department> GetAll();
     }

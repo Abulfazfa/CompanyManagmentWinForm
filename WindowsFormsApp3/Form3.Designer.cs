@@ -29,28 +29,25 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.departmentsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.spotifyDataSet = new WindowsFormsApp3.SpotifyDataSet();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
             this.departmentsTableAdapter = new WindowsFormsApp3.SpotifyDataSetTableAdapters.DepartmentsTableAdapter();
             this.searchName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btnSearch = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.searchCount = new System.Windows.Forms.TextBox();
             this.searchCapacity = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.button5 = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.insertCount = new System.Windows.Forms.TextBox();
             this.insertCapacity = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -60,6 +57,8 @@
             this.DepartmentName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MemberCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Capacity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IdBox = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.departmentsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spotifyDataSet)).BeginInit();
             this.panel1.SuspendLayout();
@@ -87,32 +86,25 @@
             this.spotifyDataSet.DataSetName = "SpotifyDataSet";
             this.spotifyDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // button1
+            // btnDelete
             // 
-            this.button1.Location = new System.Drawing.Point(341, 121);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(144, 41);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Add Department";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnDelete.Location = new System.Drawing.Point(31, 411);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(144, 41);
+            this.btnDelete.TabIndex = 3;
+            this.btnDelete.Text = "Remove Department";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
-            // button2
+            // btnUpdate
             // 
-            this.button2.Location = new System.Drawing.Point(31, 442);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(144, 41);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "Remove Department";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(341, 183);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(144, 41);
-            this.button3.TabIndex = 4;
-            this.button3.Text = "Update Department";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnUpdate.Location = new System.Drawing.Point(181, 411);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(144, 41);
+            this.btnUpdate.TabIndex = 4;
+            this.btnUpdate.Text = "Update Department";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // departmentsTableAdapter
             // 
@@ -136,7 +128,7 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.button4);
+            this.panel1.Controls.Add(this.btnSearch);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.searchCount);
@@ -146,17 +138,18 @@
             this.panel1.Controls.Add(this.searchName);
             this.panel1.Location = new System.Drawing.Point(31, 72);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(280, 179);
+            this.panel1.Size = new System.Drawing.Size(294, 179);
             this.panel1.TabIndex = 7;
             // 
-            // button4
+            // btnSearch
             // 
-            this.button4.Location = new System.Drawing.Point(202, 144);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 12;
-            this.button4.Text = "Search";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnSearch.Location = new System.Drawing.Point(202, 144);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(75, 23);
+            this.btnSearch.TabIndex = 12;
+            this.btnSearch.Text = "Search";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // label5
             // 
@@ -201,53 +194,37 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.button5);
-            this.panel2.Controls.Add(this.label6);
             this.panel2.Controls.Add(this.label7);
-            this.panel2.Controls.Add(this.insertCount);
+            this.panel2.Controls.Add(this.IdBox);
+            this.panel2.Controls.Add(this.btnSave);
+            this.panel2.Controls.Add(this.label6);
             this.panel2.Controls.Add(this.insertCapacity);
             this.panel2.Controls.Add(this.label8);
             this.panel2.Controls.Add(this.label9);
             this.panel2.Controls.Add(this.insertName);
             this.panel2.Location = new System.Drawing.Point(31, 257);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(280, 179);
+            this.panel2.Size = new System.Drawing.Size(294, 148);
             this.panel2.TabIndex = 8;
             // 
-            // button5
+            // btnSave
             // 
-            this.button5.Location = new System.Drawing.Point(202, 144);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 23);
-            this.button5.TabIndex = 12;
-            this.button5.Text = "Save";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.btnSave.Location = new System.Drawing.Point(216, 122);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.TabIndex = 12;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.button5_Click);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(3, 74);
+            this.label6.Location = new System.Drawing.Point(3, 77);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(60, 16);
             this.label6.TabIndex = 11;
             this.label6.Text = "Capacity";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(3, 111);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(92, 16);
-            this.label7.TabIndex = 10;
-            this.label7.Text = "Member count";
-            // 
-            // insertCount
-            // 
-            this.insertCount.Location = new System.Drawing.Point(101, 105);
-            this.insertCount.Name = "insertCount";
-            this.insertCount.Size = new System.Drawing.Size(132, 22);
-            this.insertCount.TabIndex = 9;
             // 
             // insertCapacity
             // 
@@ -268,7 +245,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(3, 38);
+            this.label9.Location = new System.Drawing.Point(3, 39);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(44, 16);
             this.label9.TabIndex = 6;
@@ -276,7 +253,7 @@
             // 
             // insertName
             // 
-            this.insertName.Location = new System.Drawing.Point(53, 35);
+            this.insertName.Location = new System.Drawing.Point(53, 36);
             this.insertName.Name = "insertName";
             this.insertName.Size = new System.Drawing.Size(132, 22);
             this.insertName.TabIndex = 5;
@@ -289,18 +266,19 @@
             this.DepartmentName,
             this.MemberCount,
             this.Capacity});
-            this.dgv.Location = new System.Drawing.Point(491, 81);
+            this.dgv.Location = new System.Drawing.Point(556, 81);
             this.dgv.Name = "dgv";
             this.dgv.RowHeadersWidth = 51;
             this.dgv.RowTemplate.Height = 24;
-            this.dgv.Size = new System.Drawing.Size(571, 269);
+            this.dgv.Size = new System.Drawing.Size(526, 269);
             this.dgv.TabIndex = 9;
+            this.dgv.DoubleClick += new System.EventHandler(this.dgv_DoubleClick);
             // 
             // Id
             // 
             this.Id.DataPropertyName = "Id";
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.Id.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.Id.DefaultCellStyle = dataGridViewCellStyle3;
             this.Id.HeaderText = "Id";
             this.Id.MinimumWidth = 6;
             this.Id.Name = "Id";
@@ -331,6 +309,24 @@
             this.Capacity.Name = "Capacity";
             this.Capacity.Width = 125;
             // 
+            // IdBox
+            // 
+            this.IdBox.Location = new System.Drawing.Point(36, 106);
+            this.IdBox.Name = "IdBox";
+            this.IdBox.Size = new System.Drawing.Size(35, 22);
+            this.IdBox.TabIndex = 13;
+            this.IdBox.Visible = false;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(12, 112);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(18, 16);
+            this.label7.TabIndex = 14;
+            this.label7.Text = "Id";
+            this.label7.Visible = false;
+            // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -339,9 +335,8 @@
             this.Controls.Add(this.dgv);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnUpdate);
+            this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.label1);
             this.Name = "Form3";
             this.Text = "Form3";
@@ -361,9 +356,8 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button btnUpdate;
         private SpotifyDataSet spotifyDataSet;
         private System.Windows.Forms.BindingSource departmentsBindingSource;
         private SpotifyDataSetTableAdapters.DepartmentsTableAdapter departmentsTableAdapter;
@@ -371,16 +365,14 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox searchCount;
         private System.Windows.Forms.TextBox searchCapacity;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox insertCount;
         private System.Windows.Forms.TextBox insertCapacity;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
@@ -390,5 +382,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DepartmentName;
         private System.Windows.Forms.DataGridViewTextBoxColumn MemberCount;
         private System.Windows.Forms.DataGridViewTextBoxColumn Capacity;
+        private System.Windows.Forms.TextBox IdBox;
+        private System.Windows.Forms.Label label7;
     }
 }

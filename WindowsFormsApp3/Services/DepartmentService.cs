@@ -39,12 +39,12 @@ namespace Business.Services
 
         }
 
-        public bool Update(string name, Department department)
+        public bool Update(int id, Department department)
         {
             try
             {
-                Department filtereddepartment = departmentReposity.Get(dep => dep.Name == name);
-                if (department.Name != name)
+                Department filtereddepartment = departmentReposity.Get(dep => dep.Id == id);
+                if (department.Name != filtereddepartment.Name)
                 {
                     Department isAvaible = departmentReposity.Get(dep => dep.Name == department.Name);
                     if (isAvaible == null)
@@ -84,11 +84,11 @@ namespace Business.Services
             }
         }
 
-        public bool Delete(string name)
+        public bool Delete(int id)
         {
-            if (departmentReposity.Get(dep => dep.Name == name) != null)
+            if (departmentReposity.Get(dep => dep.Id == id) != null)
             {
-                departmentReposity.Delete(departmentReposity.Get(dep => dep.Name == name));
+                departmentReposity.Delete(GetById(id));
                 return true;
             }
             return false;
