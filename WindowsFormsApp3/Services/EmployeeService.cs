@@ -87,26 +87,26 @@ namespace Business.Services
         {
             return employeeRepository.GetAll(predicate);
         }
-        //public List<Employee> GetAllByAge(int age)
-        //{
-        //    return employeeRepository.GetAll(emp => emp.Age == age);
-        //}
-        //public Employee GetById(int id)
-        //{
-        //    return employeeRepository.Get(emp => emp.EmployeeId == id);
-        //}
-        //public Employee GetByName(string name)
-        //{
-        //    return employeeRepository.Get(emp => emp.Name == name);
-        //}
-        //public List<Employee> GetAllByDepartmentId(int id)
-        //{
-        //    return employeeRepository.GetAll(emp => emp.DepartmentId == id);
-        //}
-        //public List<Employee> SearchMethodforEmployeesByNameOrSurname(Predicate<Employee> predicate)
-        //{
-        //    return employeeRepository.GetAll(predicate);
-        //}
+        public List<Employee> GetAllByAge(int age)
+        {
+            return employeeRepository.GetAll(emp => emp.Age == age);
+        }
+        public Employee GetById(int id)
+        {
+            return employeeRepository.Get(emp => emp.EmployeeId == id);
+        }
+        public Employee GetByName(string name)
+        {
+            return employeeRepository.Get(emp => emp.Name == name);
+        }
+        public List<Employee> GetAllByDepartmentId(int id)
+        {
+            return employeeRepository.GetAll(emp => emp.DepartmentId == id);
+        }
+        public List<Employee> SearchMethodforEmployeesByNameOrSurname(Func<Employee, bool> predicate)
+        {
+            return employeeRepository.GetAll(predicate);
+        }
 
         public bool Update(int id, Employee employee)
         {
