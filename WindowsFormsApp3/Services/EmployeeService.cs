@@ -32,6 +32,7 @@ namespace Business.Services
                     if (filtered != null)
                     {
                         filtered.MemberCount++;
+                        departmentReposity.Update(filtered);
                     }
                     else
                     {
@@ -41,6 +42,7 @@ namespace Business.Services
 
                     if (filtered.MemberCount <= filtered.Capacity)
                     {
+                        employee.CreatingTime = DateTime.Now;
                         return employeeRepository.Create(employee);
                     }
                     else
@@ -73,6 +75,7 @@ namespace Business.Services
                 if (deletedEmployee != null)
                 {
                     department.MemberCount--;
+                    departmentReposity.Update(department);
                     return employeeRepository.Delete(deletedEmployee);
                 }
                 return false;

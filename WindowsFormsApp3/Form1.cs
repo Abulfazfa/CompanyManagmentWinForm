@@ -33,6 +33,8 @@ namespace WindowsFormsApp3
             {
                 Form2 form2 = new Form2(appUser);
                 form2.Show();
+                Form1 form1 = new Form1();
+                form1.Close();
             }
             
         }

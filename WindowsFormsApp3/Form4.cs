@@ -20,8 +20,8 @@ namespace WindowsFormsApp3
         }
 
         private void Form4_Load(object sender, EventArgs e)
-        {            
-            
+        {
+
             insertAge.KeyPress += insertNumber_KeyPress;
             PopulateDataGridView();
             btnDelete.Enabled = false;
@@ -47,7 +47,7 @@ namespace WindowsFormsApp3
         {
             if (dgv.CurrentRow.Index != -1)
             {
-                int employeeId = Convert.ToInt32(dgv.CurrentRow.Cells["Id"].Value);
+                int employeeId = Convert.ToInt32(dgv.CurrentRow.Cells["EmployeeId"].Value);
                 var employee = employeeService.GetById(employeeId);
                 insertName.Text = employee.Name;
                 insertAddress.Text = employee.Address;
@@ -62,7 +62,31 @@ namespace WindowsFormsApp3
             }
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+
+
+    
+
+        void PopulateDataGridView()
+        {
+            dgv.AutoGenerateColumns = false;
+
+            var employeesWithDepartments = employeeService.GetAll()
+                .Select(employee => new
+                {
+                    employee.EmployeeId,
+                    employee.Name,
+                    employee.Surname,
+                    employee.Address,
+                    employee.Age,
+                    DepartmentName = employee.Department.Name,
+                    employee.CreatingTime
+                })
+                .ToList();
+
+            dgv.DataSource = employeesWithDepartments;
+        }
+
+        private void btnSave_Click_1(object sender, EventArgs e)
         {
             string name = insertName.Text;
             string surname = insertSurname.Text;
@@ -77,11 +101,12 @@ namespace WindowsFormsApp3
                 var result = employeeService.Create(new Employee()
                 {
                     Name = name,
-                    Surname = surname, 
+                    Surname = surname,
                     Address = address,
                     Age = age,
                     DepartmentId = existingDepartment.Id,
                 });
+                PopulateDataGridView();
                 if (result)
                 {
                     MessageBox.Show("Submitted successfully.");
@@ -109,10 +134,14 @@ namespace WindowsFormsApp3
                 Name = name,
                 Surname = surname,
                 Address = address,
-                Age= age,
+                Age = age,
                 DepartmentId = employeeService.GetById(employeeId).DepartmentId
             };
             var result = employeeService.Update(employeeId, employee);
+            btnSave.Enabled = true;
+            btnUpdate.Enabled = false;
+            btnDelete.Enabled = false;
+            PopulateDataGridView();
             if (result) MessageBox.Show("Submitted successfully.");
             else { MessageBox.Show("Something goes wrong."); }
         }
@@ -121,6 +150,10 @@ namespace WindowsFormsApp3
         {
             int employeeId = int.Parse(IdBox.Text);
             var result = employeeService.Delete(employeeId);
+            PopulateDataGridView();
+            btnSave.Enabled = true;
+            btnUpdate.Enabled = false;
+            btnDelete.Enabled = false;
             if (result) MessageBox.Show("Removed successfully.");
             else { MessageBox.Show("Something goes wrong."); }
         }
@@ -131,7 +164,7 @@ namespace WindowsFormsApp3
             if (!string.IsNullOrEmpty(searchName.Text))
             {
                 string nameOrSurname = searchName.Text;
-                employees = employees.Where(d => d.Name.Contains(nameOrSurname)).ToList();
+                employees = employees.Where(d => d.Name.ToUpper().Contains(nameOrSurname.ToUpper())).ToList();
             }
             if (!string.IsNullOrEmpty(searchAge.Text))
             {
@@ -145,26 +178,5 @@ namespace WindowsFormsApp3
             }
             dgv.DataSource = employees;
         }
-
-        void PopulateDataGridView()
-        {
-            dgv.AutoGenerateColumns = false;
-
-            var employeesWithDepartments = employeeService.GetAll()
-                .Select(employee => new
-                {
-                    employee.EmployeeId,
-                    employee.Name,
-                    employee.Surname,
-                    employee.Address,
-                    employee.Age,
-                    DepartmentName = employee.Department.Name,
-                    employee.CreatingTime
-                })
-                .ToList();
-
-            dgv.DataSource = employeesWithDepartments;
-        }
-
     }
 }

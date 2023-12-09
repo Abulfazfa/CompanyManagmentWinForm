@@ -80,8 +80,9 @@ namespace WindowsFormsApp3
                 var result = departmentService.Create(new Department()
                 {
                     Name = name,
-                    Capacity = capacity
-                });
+                    Capacity = capacity,
+                    MemberCount = 0
+                }) ;
                 if (result)
                 {
                     MessageBox.Show("Submitted successfully.");
@@ -108,6 +109,9 @@ namespace WindowsFormsApp3
                 Capacity = capacity,
             };
             var result = departmentService.Update(departmentId, existingDepartment);
+            btnSave.Enabled = true;
+            btnUpdate.Enabled = false;
+            btnDelete.Enabled = false;
             if (result) MessageBox.Show("Submitted successfully.");
             else { MessageBox.Show("Something goes wrong."); }
         }
@@ -116,6 +120,9 @@ namespace WindowsFormsApp3
         {
             int departmentId = int.Parse(IdBox.Text);
             var result = departmentService.Delete(departmentId);
+            btnSave.Enabled = true;
+            btnUpdate.Enabled = false;
+            btnDelete.Enabled = false;
             if (result) MessageBox.Show("Removed successfully.");
             else { MessageBox.Show("Something goes wrong."); }
         }

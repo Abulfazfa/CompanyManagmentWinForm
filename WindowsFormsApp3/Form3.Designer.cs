@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.departmentsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.spotifyDataSet = new WindowsFormsApp3.SpotifyDataSet();
@@ -328,20 +328,20 @@
             this.MemberCount,
             this.Capacity});
             this.dgv.GridColor = System.Drawing.SystemColors.AppWorkspace;
-            this.dgv.Location = new System.Drawing.Point(659, 47);
+            this.dgv.Location = new System.Drawing.Point(509, 47);
             this.dgv.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgv.Name = "dgv";
             this.dgv.RowHeadersWidth = 51;
             this.dgv.RowTemplate.Height = 24;
-            this.dgv.Size = new System.Drawing.Size(434, 478);
+            this.dgv.Size = new System.Drawing.Size(584, 478);
             this.dgv.TabIndex = 9;
             this.dgv.DoubleClick += new System.EventHandler(this.dgv_DoubleClick);
             // 
             // Id
             // 
             this.Id.DataPropertyName = "Id";
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.Id.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.Id.DefaultCellStyle = dataGridViewCellStyle4;
             this.Id.HeaderText = "Id";
             this.Id.MinimumWidth = 6;
             this.Id.Name = "Id";
@@ -377,7 +377,7 @@
             this.panel3.BackColor = System.Drawing.SystemColors.Window;
             this.panel3.Controls.Add(this.label1);
             this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1096, 49);
             this.panel3.TabIndex = 10;
@@ -388,7 +388,7 @@
             this.panel4.Controls.Add(this.panel1);
             this.panel4.Controls.Add(this.panel2);
             this.panel4.Location = new System.Drawing.Point(0, 47);
-            this.panel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel4.Margin = new System.Windows.Forms.Padding(4);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(435, 478);
             this.panel4.TabIndex = 11;

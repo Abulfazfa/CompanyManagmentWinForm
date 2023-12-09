@@ -84,9 +84,10 @@
             this.dgv.Name = "dgv";
             this.dgv.RowHeadersWidth = 51;
             this.dgv.RowTemplate.Height = 24;
-            this.dgv.Size = new System.Drawing.Size(824, 187);
+            this.dgv.Size = new System.Drawing.Size(1071, 187);
             this.dgv.TabIndex = 0;
             this.dgv.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dgv.DoubleClick += new System.EventHandler(this.dgv_DoubleClick);
             // 
             // EmployeeId
             // 
@@ -175,6 +176,7 @@
             this.btnSearch.TabIndex = 12;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = false;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // label5
             // 
@@ -276,6 +278,7 @@
             this.btnUpdate.TabIndex = 15;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = false;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // insertDepName
             // 
@@ -298,11 +301,12 @@
             this.btnDelete.TabIndex = 14;
             this.btnDelete.Text = "Remove";
             this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // insertAge
             // 
             this.insertAge.BackColor = System.Drawing.SystemColors.Info;
-            this.insertAge.Location = new System.Drawing.Point(220, 106);
+            this.insertAge.Location = new System.Drawing.Point(220, 135);
             this.insertAge.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.insertAge.Name = "insertAge";
             this.insertAge.Size = new System.Drawing.Size(207, 22);
@@ -311,7 +315,7 @@
             // insertAddress
             // 
             this.insertAddress.BackColor = System.Drawing.SystemColors.Info;
-            this.insertAddress.Location = new System.Drawing.Point(220, 135);
+            this.insertAddress.Location = new System.Drawing.Point(220, 103);
             this.insertAddress.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.insertAddress.Name = "insertAddress";
             this.insertAddress.Size = new System.Drawing.Size(207, 22);
@@ -320,7 +324,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(3, 162);
+            this.label11.Location = new System.Drawing.Point(4, 165);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(114, 16);
             this.label11.TabIndex = 17;
@@ -329,7 +333,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(3, 129);
+            this.label10.Location = new System.Drawing.Point(3, 135);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(32, 16);
             this.label10.TabIndex = 16;
@@ -338,7 +342,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 106);
+            this.label1.Location = new System.Drawing.Point(4, 106);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(58, 16);
             this.label1.TabIndex = 15;
@@ -347,7 +351,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(3, 204);
+            this.label7.Location = new System.Drawing.Point(17, 206);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(18, 16);
             this.label7.TabIndex = 14;
@@ -362,7 +366,6 @@
             this.IdBox.Name = "IdBox";
             this.IdBox.Size = new System.Drawing.Size(207, 22);
             this.IdBox.TabIndex = 13;
-            this.IdBox.Visible = false;
             // 
             // btnSave
             // 
@@ -377,11 +380,12 @@
             this.btnSave.TabIndex = 12;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click_1);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(3, 78);
+            this.label6.Location = new System.Drawing.Point(4, 73);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(61, 16);
             this.label6.TabIndex = 11;
@@ -409,7 +413,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(3, 39);
+            this.label9.Location = new System.Drawing.Point(4, 39);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(44, 16);
             this.label9.TabIndex = 6;
