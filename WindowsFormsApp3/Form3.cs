@@ -1,16 +1,11 @@
 ﻿using Business.Services;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Xml.Linq;
 using WindowsFormsApp3.Models;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+
 
 namespace WindowsFormsApp3
 {
@@ -25,7 +20,6 @@ namespace WindowsFormsApp3
 
         private void Form3_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'spotifyDataSet.Departments' table. You can move, or remove it, as needed.
             this.departmentsTableAdapter.Fill(this.spotifyDataSet.Departments);
             searchCount.KeyPress += insertCount_KeyPress;
             insertCapacity.KeyPress += insertCapacity_KeyPress;
