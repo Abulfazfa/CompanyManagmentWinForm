@@ -2,7 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Entity;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 using WindowsFormsApp3.Models;
@@ -11,38 +13,35 @@ namespace WindowsFormsApp3.Repositories
 {
     public class AppUserRepository
     {
-        //private readonly Entities dbContext = new Entities();
+        private readonly SpotifyEntities1 dbContext = new SpotifyEntities1();
 
+        public bool Create(User obj)
+        {
+            try
+            {
+                dbContext.Users.Add(obj);
+                dbContext.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
-        //public bool Create(Department obj)
-        //{
-        //    try
-        //    {
-        //        string query = $"INSERT INTO Departments (Name) VALUES ('{obj.Name}')";
-        //        int rowsAffected = dbContext.ExecuteNonQuery(query);
-        //        return rowsAffected > 0;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        // Handle exception or log the error
-        //        throw ex;
-        //    }
-        //}
-
-        //public bool Delete(Department obj)
-        //{
-        //    try
-        //    {
-        //        string query = $"DELETE FROM Departments WHERE Id = {obj.Id}";
-        //        int rowsAffected = dbContext.ExecuteNonQuery(query);
-        //        return rowsAffected > 0;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        // Handle exception or log the error
-        //        throw ex;
-        //    }
-        //}
+        public bool Delete(User obj)
+        {
+            try
+            {
+                dbContext.Users.Remove(obj);
+                dbContext.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
         public User Get(Predicate<User> predicate)
         {
@@ -61,14 +60,13 @@ namespace WindowsFormsApp3.Repositories
         {
             try
             {
-                SpotifyEntities1 Entities = new SpotifyEntities1();
                 if (predicate != null)
                 {
-                    return Entities.Users.Where(predicate).ToList();
+                    return dbContext.Users.Where(predicate).ToList();
                 }
                 else
                 {
-                    return Entities.Users.ToList();
+                    return dbContext.Users.ToList();
                 }
             }
             catch (Exception ex)
@@ -77,19 +75,19 @@ namespace WindowsFormsApp3.Repositories
             }
         }
 
-        //public bool Update(Department obj)
-        //{
-        //    try
-        //    {
-        //        string query = $"UPDATE Departments SET Name = '{obj.Name}' WHERE Id = {obj.Id}";
-        //        int rowsAffected = dbContext.ExecuteNonQuery(query);
-        //        return rowsAffected > 0;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        // Handle exception or log the error
-        //        throw ex;
-        //    }
-        //}
+        public bool Update(User obj)
+        {
+            try
+            {
+                var existUser = dbContext.Users.FirstOrDefault(e => e.Id == obj.Id);
+                existUser = obj;
+                dbContext.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

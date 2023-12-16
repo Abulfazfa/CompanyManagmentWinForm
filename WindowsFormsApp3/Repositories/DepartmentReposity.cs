@@ -11,7 +11,6 @@ namespace DataAccess.Repositories
         private readonly SpotifyEntities1 dbContext = new SpotifyEntities1();
 
         
-
         public bool Create(Department obj)
         {
             try

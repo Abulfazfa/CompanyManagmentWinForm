@@ -22,13 +22,13 @@ namespace Business.Services
             employeeRepository = new EmployeeRepository();
             departmentReposity = new DepartmentRepository();
         }
-        public bool Create(Employee employee)
+        public bool Create(WindowsFormsApp3.Models.Employee employee)
         {
             try
             {
                 if (employeeRepository.Get(emp => emp.Name.ToLower() == employee.Name.ToLower()) == null)
                 {
-                    Department filtered = departmentReposity.Get(dep => dep.Id == employee.DepartmentId);
+                    WindowsFormsApp3.Models.Department filtered = departmentReposity.Get(dep => dep.Id == employee.DepartmentId);
                     if (filtered != null)
                     {
                         filtered.MemberCount++;
@@ -70,8 +70,8 @@ namespace Business.Services
         {
             try
             {
-                Employee deletedEmployee = employeeRepository.Get(emp => emp.EmployeeId == id);
-                Department department = departmentReposity.Get(dep => dep.Id == deletedEmployee.DepartmentId);
+                WindowsFormsApp3.Models.Employee deletedEmployee = employeeRepository.Get(emp => emp.EmployeeId == id);
+                WindowsFormsApp3.Models.Department department = departmentReposity.Get(dep => dep.Id == deletedEmployee.DepartmentId);
                 if (deletedEmployee != null)
                 {
                     department.MemberCount--;
@@ -86,41 +86,41 @@ namespace Business.Services
             }
         }
 
-        public List<Employee> GetAll(Func<Employee,bool> predicate = null)
+        public List<WindowsFormsApp3.Models.Employee> GetAll(Func<WindowsFormsApp3.Models.Employee,bool> predicate = null)
         {
             return employeeRepository.GetAll(predicate);
         }
-        public List<Employee> GetAllByAge(int age)
+        public List<WindowsFormsApp3.Models.Employee> GetAllByAge(int age)
         {
             return employeeRepository.GetAll(emp => emp.Age == age);
         }
-        public Employee GetById(int id)
+        public WindowsFormsApp3.Models.Employee GetById(int id)
         {
             return employeeRepository.Get(emp => emp.EmployeeId == id);
         }
-        public Employee GetByName(string name)
+        public WindowsFormsApp3.Models.Employee GetByName(string name)
         {
             return employeeRepository.Get(emp => emp.Name == name);
         }
-        public List<Employee> GetAllByDepartmentId(int id)
+        public List<WindowsFormsApp3.Models.Employee> GetAllByDepartmentId(int id)
         {
             return employeeRepository.GetAll(emp => emp.DepartmentId == id);
         }
-        public List<Employee> SearchMethodforEmployeesByNameOrSurname(Func<Employee, bool> predicate)
+        public List<WindowsFormsApp3.Models.Employee> SearchMethodforEmployeesByNameOrSurname(Func<WindowsFormsApp3.Models.Employee, bool> predicate)
         {
             return employeeRepository.GetAll(predicate);
         }
 
-        public bool Update(int id, Employee employee)
+        public bool Update(int id, WindowsFormsApp3.Models.Employee employee)
         {
             try
             {
-                Employee filtered = employeeRepository.Get(emp => emp.EmployeeId == id);
-                Department department = departmentReposity.Get(dep => dep.Id == filtered.DepartmentId);
+                WindowsFormsApp3.Models.Employee filtered = employeeRepository.Get(emp => emp.EmployeeId == id);
+                WindowsFormsApp3.Models.Department department = departmentReposity.Get(dep => dep.Id == filtered.DepartmentId);
 
                 if (filtered.DepartmentId != employee.DepartmentId)
                 {
-                    Department department1 = departmentReposity.Get(dep => dep.Id == employee.DepartmentId);
+                    WindowsFormsApp3.Models.Department department1 = departmentReposity.Get(dep => dep.Id == employee.DepartmentId);
                     if (department1 != null)
                     {
                         if (employee.Name != null)

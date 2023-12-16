@@ -17,7 +17,7 @@ namespace DataAccess.Repositories
             dbContext = new SpotifyEntities1();
         }
 
-        public bool Create(Employee obj)
+        public bool Create(WindowsFormsApp3.Models.Employee obj)
         {
             try
             {
@@ -31,7 +31,7 @@ namespace DataAccess.Repositories
             }
         }
 
-        public bool Delete(Employee obj)
+        public bool Delete(WindowsFormsApp3.Models.Employee obj)
         {
             try
             {
@@ -45,11 +45,11 @@ namespace DataAccess.Repositories
             }
         }
 
-        public Employee Get(Predicate<Employee> predicate)
+        public WindowsFormsApp3.Models.Employee Get(Predicate<WindowsFormsApp3.Models.Employee> predicate)
         {
             try
             {
-                List<Employee> employees = GetAll();
+                List<WindowsFormsApp3.Models.Employee> employees = GetAll();
                 return employees.Find(predicate);
             }
             catch (Exception ex)
@@ -58,7 +58,7 @@ namespace DataAccess.Repositories
             }
         }
 
-        public bool Update(Employee obj)
+        public bool Update(WindowsFormsApp3.Models.Employee obj)
         {
             try
             {
@@ -73,7 +73,7 @@ namespace DataAccess.Repositories
             }
         }
 
-        public List<Employee> GetAll(Func<Employee, bool> predicate = null)
+        public List<WindowsFormsApp3.Models.Employee> GetAll(Func<WindowsFormsApp3.Models.Employee, bool> predicate = null)
         {
             try
             {

@@ -5,19 +5,27 @@ using System.Data;
 using System.Linq;
 using System.Windows.Forms;
 using WindowsFormsApp3.Models;
-
+using WindowsFormsApp3.Repositories;
+using WindowsFormsApp3.Services;
 
 namespace WindowsFormsApp3
 {
-    public partial class Form3 : Form
+    public partial class DepartmentForm : Form
     {
         private readonly DepartmentService departmentService;
-        public Form3()
+        private readonly User _user;
+        private readonly CommandRepository _commandService;
+        public DepartmentForm()
+        {
+            InitializeComponent();
+        }
+        public DepartmentForm(User appUser)
         {
             InitializeComponent();
             departmentService = new DepartmentService();
+            _commandService = new CommandRepository();
+            _user = appUser;
         }
-
         private void Form3_Load(object sender, EventArgs e)
         {
             this.departmentsTableAdapter.Fill(this.spotifyDataSet.Departments);
@@ -74,17 +82,19 @@ namespace WindowsFormsApp3
             int capacity = int.Parse(insertCapacity.Text);
 
             Department existingDepartment = departmentService.Get(d => d.Name == name);
-
             if (existingDepartment == null)
             {
+                
                 var result = departmentService.Create(new Department()
                 {
                     Name = name,
                     Capacity = capacity,
                     MemberCount = 0
                 }) ;
+                PopulateDataGridView();
                 if (result)
                 {
+                    _commandService.Create(new Command() { Username = _user.Username, UsedFor = $"ADD Department {name}", ApplyDate = DateTime.Now });
                     MessageBox.Show("Submitted successfully.");
                 }
                 else
@@ -108,22 +118,34 @@ namespace WindowsFormsApp3
                 Name = name,
                 Capacity = capacity,
             };
+            
             var result = departmentService.Update(departmentId, existingDepartment);
             btnSave.Enabled = true;
             btnUpdate.Enabled = false;
             btnDelete.Enabled = false;
-            if (result) MessageBox.Show("Submitted successfully.");
+            PopulateDataGridView();
+            if (result) 
+            {
+                //_commandService.Create(new Command() { Username = _user.Username, UsedFor = $"UPDATE Department {existingDepartment.Name}" });
+                MessageBox.Show("Submitted successfully.");
+            }
             else { MessageBox.Show("Something goes wrong."); }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
             int departmentId = int.Parse(IdBox.Text);
+            var departmentName = departmentService.GetById(departmentId).Name;
             var result = departmentService.Delete(departmentId);
             btnSave.Enabled = true;
             btnUpdate.Enabled = false;
             btnDelete.Enabled = false;
-            if (result) MessageBox.Show("Removed successfully.");
+            PopulateDataGridView();
+            if (result)
+            {
+                _commandService.Create(new Command() { Username = _user.Username, UsedFor = $"REMOVE Department {departmentName}", ApplyDate = DateTime.Now });
+                MessageBox.Show("Removed successfully.");
+            }
             else { MessageBox.Show("Something goes wrong."); }
         }
 
@@ -143,6 +165,15 @@ namespace WindowsFormsApp3
                 departments = departments.Where(d => d.MemberCount == count).ToList();
             }
             dgv.DataSource = departments;
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            insertName.Text = null;
+            insertCapacity.Text = null;
+            btnSave.Enabled = true;
+            btnUpdate.Enabled = false;
+            btnDelete.Enabled = false;
         }
     }
 }

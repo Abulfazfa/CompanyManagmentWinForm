@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApp3
 {
-    partial class Form4
+    partial class EmployeeForm
     {
         /// <summary>
         /// Required designer variable.
@@ -62,6 +62,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.insertName = new System.Windows.Forms.TextBox();
+            this.btnCancel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -245,6 +246,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.panel2.Controls.Add(this.btnCancel);
             this.panel2.Controls.Add(this.btnUpdate);
             this.panel2.Controls.Add(this.insertDepName);
             this.panel2.Controls.Add(this.btnDelete);
@@ -274,7 +276,7 @@
             this.btnUpdate.Location = new System.Drawing.Point(5, 240);
             this.btnUpdate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(212, 34);
+            this.btnUpdate.Size = new System.Drawing.Size(144, 34);
             this.btnUpdate.TabIndex = 15;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = false;
@@ -294,10 +296,10 @@
             this.btnDelete.BackColor = System.Drawing.Color.OrangeRed;
             this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDelete.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnDelete.Location = new System.Drawing.Point(257, 240);
+            this.btnDelete.Location = new System.Drawing.Point(175, 242);
             this.btnDelete.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(217, 34);
+            this.btnDelete.Size = new System.Drawing.Size(126, 34);
             this.btnDelete.TabIndex = 14;
             this.btnDelete.Text = "Remove";
             this.btnDelete.UseVisualStyleBackColor = false;
@@ -366,6 +368,7 @@
             this.IdBox.Name = "IdBox";
             this.IdBox.Size = new System.Drawing.Size(207, 22);
             this.IdBox.TabIndex = 13;
+            this.IdBox.Visible = false;
             // 
             // btnSave
             // 
@@ -428,6 +431,20 @@
             this.insertName.Size = new System.Drawing.Size(207, 22);
             this.insertName.TabIndex = 5;
             // 
+            // btnCancel
+            // 
+            this.btnCancel.BackColor = System.Drawing.Color.Gray;
+            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnCancel.Location = new System.Drawing.Point(346, 242);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(126, 34);
+            this.btnCancel.TabIndex = 21;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = false;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
             // Form4
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -484,5 +501,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Age;
         private System.Windows.Forms.DataGridViewTextBoxColumn DepartmentName;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreatingTime;
+        private System.Windows.Forms.Button btnCancel;
     }
 }

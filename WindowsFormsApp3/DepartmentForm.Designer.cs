@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApp3
 {
-    partial class Form3
+    partial class DepartmentForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.departmentsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.spotifyDataSet = new WindowsFormsApp3.SpotifyDataSet();
@@ -61,6 +61,7 @@
             this.Capacity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.btnCancel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.departmentsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spotifyDataSet)).BeginInit();
             this.panel1.SuspendLayout();
@@ -95,10 +96,10 @@
             this.btnDelete.BackColor = System.Drawing.Color.OrangeRed;
             this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDelete.ForeColor = System.Drawing.SystemColors.InactiveBorder;
-            this.btnDelete.Location = new System.Drawing.Point(201, 156);
+            this.btnDelete.Location = new System.Drawing.Point(149, 156);
             this.btnDelete.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(231, 33);
+            this.btnDelete.Size = new System.Drawing.Size(115, 33);
             this.btnDelete.TabIndex = 3;
             this.btnDelete.Text = "Remove";
             this.btnDelete.UseVisualStyleBackColor = false;
@@ -112,7 +113,7 @@
             this.btnUpdate.Location = new System.Drawing.Point(3, 156);
             this.btnUpdate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(193, 33);
+            this.btnUpdate.Size = new System.Drawing.Size(111, 33);
             this.btnUpdate.TabIndex = 4;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = false;
@@ -221,6 +222,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.Controls.Add(this.btnCancel);
             this.panel2.Controls.Add(this.label7);
             this.panel2.Controls.Add(this.IdBox);
             this.panel2.Controls.Add(this.btnSave);
@@ -340,8 +342,8 @@
             // Id
             // 
             this.Id.DataPropertyName = "Id";
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.Id.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.Id.DefaultCellStyle = dataGridViewCellStyle1;
             this.Id.HeaderText = "Id";
             this.Id.MinimumWidth = 6;
             this.Id.Name = "Id";
@@ -392,6 +394,20 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(435, 478);
             this.panel4.TabIndex = 11;
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.BackColor = System.Drawing.Color.Gray;
+            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.ForeColor = System.Drawing.SystemColors.InactiveBorder;
+            this.btnCancel.Location = new System.Drawing.Point(299, 156);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(115, 33);
+            this.btnCancel.TabIndex = 15;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = false;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // Form3
             // 
@@ -453,5 +469,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Button btnCancel;
     }
 }

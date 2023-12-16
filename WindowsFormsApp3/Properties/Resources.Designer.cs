@@ -59,5 +59,35 @@ namespace WindowsFormsApp3.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _736_7367127_file_oxygen_apps_preferences_login_page_images_hd {
+            get {
+                object obj = ResourceManager.GetObject("736-7367127_file-oxygen-apps-preferences-login-page-images-hd", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Account_Login_Button_PNG_Clipart {
+            get {
+                object obj = ResourceManager.GetObject("Account-Login-Button-PNG-Clipart", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap log_in_password_register_secret_key_secure_security_user_935678 {
+            get {
+                object obj = ResourceManager.GetObject("log-in-password-register-secret-key-secure-security-user-935678", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

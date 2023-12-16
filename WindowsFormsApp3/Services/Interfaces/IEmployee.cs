@@ -10,12 +10,12 @@ namespace Business.Interfaces
 {
     public interface IEmployee
     {
-        bool Create(Employee employee);
-        bool Update(string name, Employee employee);
+        bool Create(WindowsFormsApp3.Models.Employee employee);
+        bool Update(string name, WindowsFormsApp3.Models.Employee employee);
         bool Delete(string name);
-        Employee GetById(int id);
-        List<Employee> GetAllByAge(int age);
-        List<Employee> GetAllByDepartmentId(int departmentId);
-        List<Employee> GetAll(Predicate<Employee>predicate);
+        WindowsFormsApp3.Models.Employee GetById(int id);
+        List<WindowsFormsApp3.Models.Employee> GetAllByAge(int age);
+        List<WindowsFormsApp3.Models.Employee> GetAllByDepartmentId(int departmentId);
+        List<WindowsFormsApp3.Models.Employee> GetAll(Predicate<WindowsFormsApp3.Models.Employee>predicate);
     }
 }

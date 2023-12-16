@@ -12,12 +12,12 @@ using WindowsFormsApp3.Services;
 
 namespace WindowsFormsApp3
 {
-    public partial class Form1 : Form
+    public partial class Login : Form
     {
         private readonly EmployeeService _employeeService;
         private readonly AppUserService _appUserService;
 
-        public Form1()
+        public Login()
         {
             InitializeComponent();
             _employeeService = new EmployeeService();
@@ -29,14 +29,17 @@ namespace WindowsFormsApp3
             string username = textBox1.Text;
             string password = textBox2.Text;
             var appUser = _appUserService.GetByName(username);
-            if (appUser != null)
+            if (appUser.Password == password)
             {
-                Form2 form2 = new Form2(appUser);
-                form2.Show();
-                Form1 form1 = new Form1();
-                form1.Close();
+                if (appUser != null)
+                {
+                    Form2 form2 = new Form2(appUser);
+                    form2.Show();
+                    Login form1 = new Login();
+                    form1.Close();
+                }
             }
-            
+            else { MessageBox.Show("Password or username isn't right"); }
         }
     }
 }

@@ -5,20 +5,31 @@ using System.Data;
 using System.Linq;
 using System.Windows.Forms;
 using WindowsFormsApp3.Models;
+using WindowsFormsApp3.Services;
 
 namespace WindowsFormsApp3
 {
-    public partial class Form4 : Form
+    public partial class EmployeeForm : Form
     {
         private readonly EmployeeService employeeService;
         private readonly DepartmentService departmentService;
-        public Form4()
+        private readonly Models.User _user;
+        private readonly CommandService _commandService;
+        public EmployeeForm()
         {
             InitializeComponent();
             employeeService = new EmployeeService();
             departmentService = new DepartmentService();
         }
 
+        public EmployeeForm(Models.User appUser)
+        {
+            InitializeComponent();
+            departmentService = new DepartmentService();
+            employeeService = new EmployeeService();
+            _user = appUser;
+            _commandService = new CommandService();
+        }
         private void Form4_Load(object sender, EventArgs e)
         {
 
@@ -94,21 +105,23 @@ namespace WindowsFormsApp3
             int age = int.Parse(insertAge.Text);
             string depName = insertDepName.Text;
 
-            Department existingDepartment = departmentService.Get(d => d.Name == depName);
+            Models.Department existingDepartment = departmentService.Get(d => d.Name == depName);
 
             if (existingDepartment != null)
             {
-                var result = employeeService.Create(new Employee()
+                var emp = new Models.Employee()
                 {
                     Name = name,
                     Surname = surname,
                     Address = address,
                     Age = age,
                     DepartmentId = existingDepartment.Id,
-                });
+                };
+                var result = employeeService.Create(emp);
                 PopulateDataGridView();
                 if (result)
                 {
+                    _commandService.Create(new Command() { Username = _user.Username, UsedFor = $"ADD Department {emp.Name}" });
                     MessageBox.Show("Submitted successfully.");
                 }
                 else
@@ -129,38 +142,57 @@ namespace WindowsFormsApp3
             string address = insertAddress.Text;
             int age = int.Parse(insertAge.Text);
             int employeeId = int.Parse(IdBox.Text);
-            Employee employee = new Employee()
+            var department = departmentService.Get(d => d.Name == insertDepName.Text);
+            if (department == null)
             {
-                Name = name,
-                Surname = surname,
-                Address = address,
-                Age = age,
-                DepartmentId = employeeService.GetById(employeeId).DepartmentId
-            };
-            var result = employeeService.Update(employeeId, employee);
-            btnSave.Enabled = true;
-            btnUpdate.Enabled = false;
-            btnDelete.Enabled = false;
-            PopulateDataGridView();
-            if (result) MessageBox.Show("Submitted successfully.");
-            else { MessageBox.Show("Something goes wrong."); }
+                MessageBox.Show("Enter valid a department");
+            }
+            else
+            {
+                Models.Employee employee = new Models.Employee()
+                {
+                    Name = name,
+                    Surname = surname,
+                    Address = address,
+                    Age = age,
+                    DepartmentId = department.Id,
+                };
+                var result = employeeService.Update(employeeId, employee);
+                btnSave.Enabled = true;
+                btnUpdate.Enabled = false;
+                btnDelete.Enabled = false;
+                PopulateDataGridView();
+                if (result) 
+                {
+                    _commandService.Create(new Command() { Username = _user.Username, UsedFor = $"UPDATE Department {employee.Name}" });
+                    MessageBox.Show("Submitted successfully."); 
+                }
+                else { MessageBox.Show("Something goes wrong."); }
+            }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
             int employeeId = int.Parse(IdBox.Text);
+            var empName = employeeService.GetById(employeeId).Name; 
             var result = employeeService.Delete(employeeId);
             PopulateDataGridView();
             btnSave.Enabled = true;
             btnUpdate.Enabled = false;
+
             btnDelete.Enabled = false;
-            if (result) MessageBox.Show("Removed successfully.");
+            if (result)
+            {
+                _commandService.Create(new Command() { Username = _user.Username, 
+                    UsedFor = $"REMOVE Department {empName}" });
+                MessageBox.Show("Removed successfully."); 
+            }
             else { MessageBox.Show("Something goes wrong."); }
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            List<Employee> employees = employeeService.GetAll();
+            List<Models.Employee> employees = employeeService.GetAll();
             if (!string.IsNullOrEmpty(searchName.Text))
             {
                 string nameOrSurname = searchName.Text;
@@ -176,7 +208,29 @@ namespace WindowsFormsApp3
                 string depName = searchDepname.Text;
                 employees = employees.Where(d => d.Department.Name == depName).ToList();
             }
-            dgv.DataSource = employees;
+            dgv.DataSource = employees.Select(employee => new
+            {
+                employee.EmployeeId,
+                employee.Name,
+                employee.Surname,
+                employee.Address,
+                employee.Age,
+                DepartmentName = employee.Department.Name,
+                employee.CreatingTime
+            })
+                .ToList();
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            insertName.Text = null;
+            insertDepName.Text = null; 
+            insertAge.Text = null;
+            insertAddress.Text = null;
+            insertSurname.Text = null;
+            btnSave.Enabled = true;
+            btnUpdate.Enabled = false;
+            btnDelete.Enabled = false;
         }
     }
 }
