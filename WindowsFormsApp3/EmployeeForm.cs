@@ -99,17 +99,22 @@ namespace WindowsFormsApp3
 
         private void btnSave_Click_1(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(insertName.Text) || string.IsNullOrEmpty(insertSurname.Text) || string.IsNullOrEmpty(insertAddress.Text) || string.IsNullOrEmpty(insertAge.Text) || string.IsNullOrEmpty(insertDepName.Text))
+            {
+                MessageBox.Show("One or more input values are null or invalid.");
+                return;
+            }
             string name = insertName.Text;
             string surname = insertSurname.Text;
             string address = insertAddress.Text;
             int age = int.Parse(insertAge.Text);
             string depName = insertDepName.Text;
 
-            Models.Department existingDepartment = departmentService.Get(d => d.Name == depName);
+            Department existingDepartment = departmentService.Get(d => d.Name == depName);
 
             if (existingDepartment != null)
             {
-                var emp = new Models.Employee()
+                var emp = new Employee()
                 {
                     Name = name,
                     Surname = surname,
@@ -137,6 +142,12 @@ namespace WindowsFormsApp3
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(insertName.Text) || string.IsNullOrEmpty(insertSurname.Text) || string.IsNullOrEmpty(insertAddress.Text) || string.IsNullOrEmpty(insertAge.Text) || string.IsNullOrEmpty(insertDepName.Text))
+            {
+                MessageBox.Show("One or more input values are null or invalid.");
+                return;
+            }
+
             string name = insertName.Text;
             string surname = insertSurname.Text;
             string address = insertAddress.Text;
@@ -231,6 +242,13 @@ namespace WindowsFormsApp3
             btnSave.Enabled = true;
             btnUpdate.Enabled = false;
             btnDelete.Enabled = false;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Sections form2 = new Sections();
+            form2.Show();
+            this.Close();
         }
     }
 }

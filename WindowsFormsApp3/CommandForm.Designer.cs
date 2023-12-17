@@ -83,7 +83,7 @@
             this.dgv.Name = "dgv";
             this.dgv.RowHeadersWidth = 51;
             this.dgv.RowTemplate.Height = 24;
-            this.dgv.Size = new System.Drawing.Size(360, 451);
+            this.dgv.Size = new System.Drawing.Size(439, 451);
             this.dgv.TabIndex = 12;
             // 
             // panel1
@@ -185,7 +185,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(865, 450);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dgv);
             this.Name = "CommandForm";

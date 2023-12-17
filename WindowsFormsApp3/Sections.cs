@@ -12,15 +12,15 @@ using WindowsFormsApp3.Services;
 
 namespace WindowsFormsApp3
 {
-    public partial class Form2 : Form
+    public partial class Sections : Form
     {
         private readonly Models.User _appUser;
 
-        public Form2()
+        public Sections()
         {
             InitializeComponent();
         }
-        public Form2(Models.User appUser)
+        public Sections(Models.User appUser)
         {
             InitializeComponent();
             _appUser = appUser;

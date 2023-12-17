@@ -33,7 +33,7 @@ namespace WindowsFormsApp3
             {
                 if (appUser != null)
                 {
-                    Form2 form2 = new Form2(appUser);
+                    Sections form2 = new Sections(appUser);
                     form2.Show();
                     Login form1 = new Login();
                     form1.Close();

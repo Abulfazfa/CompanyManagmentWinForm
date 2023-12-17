@@ -57,6 +57,12 @@ namespace WindowsFormsApp3
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(insertName.Text) || string.IsNullOrEmpty(insertPassword.Text))
+            {
+                MessageBox.Show("One or more input values are null or invalid.");
+                return;
+            }
+
             string name = insertName.Text;
             string password = insertPassword.Text;
 
@@ -71,7 +77,6 @@ namespace WindowsFormsApp3
                 PopulateDataGridView();
                 if (result)
                 {
-                    //_commandService.Create(new Command() { Username = _user.Username, UsedFor = $"ADD Department {name}", ApplyDate = DateTime.Now });
                     MessageBox.Show("Submitted successfully.");
                 }
                 else
@@ -87,6 +92,11 @@ namespace WindowsFormsApp3
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(insertName.Text) || string.IsNullOrEmpty(insertPassword.Text))
+            {
+                MessageBox.Show("One or more input values are null or invalid.");
+                return;
+            }
             string name = insertName.Text;
             string password = insertPassword.Text;
             int userId = Convert.ToInt32(IdBox.Text);
@@ -104,7 +114,6 @@ namespace WindowsFormsApp3
             PopulateDataGridView();
             if (result)
             {
-                //_commandService.Create(new Command() { Username = _user.Username, UsedFor = $"UPDATE Department {existingDepartment.Name}" });
                 MessageBox.Show("Submitted successfully.");
             }
             else { MessageBox.Show("Something goes wrong."); }
@@ -121,10 +130,25 @@ namespace WindowsFormsApp3
             PopulateDataGridView();
             if (result)
             {
-                //_commandService.Create(new Command() { Username = _user.Username, UsedFor = $"REMOVE Department {departmentName}", ApplyDate = DateTime.Now });
                 MessageBox.Show("Removed successfully.");
             }
             else { MessageBox.Show("Something goes wrong."); }
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            insertName.Text = null;
+            insertPassword.Text = null;
+            btnSave.Enabled = true;
+            btnUpdate.Enabled = false;
+            btnDelete.Enabled = false;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Sections form2 = new Sections();
+            form2.Show();
+            this.Close();
         }
     }
 }

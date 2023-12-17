@@ -78,6 +78,12 @@ namespace WindowsFormsApp3
 
         private void button5_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(insertName.Text) || string.IsNullOrEmpty(insertCapacity.Text))
+            {
+                MessageBox.Show("One or more input values are null or invalid.");
+                return;
+            }
+
             string name = insertName.Text;
             int capacity = int.Parse(insertCapacity.Text);
 
@@ -110,6 +116,12 @@ namespace WindowsFormsApp3
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(insertName.Text) || string.IsNullOrEmpty(insertCapacity.Text))
+            {
+                MessageBox.Show("One or more input values are null or invalid.");
+                return;
+            }
+
             string name = insertName.Text;
             int capacity = int.Parse(insertCapacity.Text);
             int departmentId = int.Parse(IdBox.Text);
@@ -126,7 +138,7 @@ namespace WindowsFormsApp3
             PopulateDataGridView();
             if (result) 
             {
-                //_commandService.Create(new Command() { Username = _user.Username, UsedFor = $"UPDATE Department {existingDepartment.Name}" });
+                _commandService.Create(new Command() { Username = _user.Username, UsedFor = $"UPDATE Department {existingDepartment.Name}" });
                 MessageBox.Show("Submitted successfully.");
             }
             else { MessageBox.Show("Something goes wrong."); }
@@ -174,6 +186,13 @@ namespace WindowsFormsApp3
             btnSave.Enabled = true;
             btnUpdate.Enabled = false;
             btnDelete.Enabled = false;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Sections form2 = new Sections();
+            form2.Show();
+            this.Close();
         }
     }
 }

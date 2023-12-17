@@ -47,3 +47,4 @@ C:\Users\HP\Desktop\CompanyManagmentWinForm-master\WindowsFormsApp3\obj\Debug\Wi
 C:\Users\HP\Desktop\CompanyManagmentWinForm-master\WindowsFormsApp3\obj\Debug\WindowsFormsApp3.DepartmentForm.resources
 C:\Users\HP\Desktop\CompanyManagmentWinForm-master\WindowsFormsApp3\obj\Debug\WindowsFormsApp3.EmployeeForm.resources
 C:\Users\HP\Desktop\CompanyManagmentWinForm-master\WindowsFormsApp3\obj\Debug\WindowsFormsApp3.UserForm.resources
+C:\Users\HP\Desktop\CompanyManagmentWinForm-master\WindowsFormsApp3\obj\Debug\WindowsFormsApp3.CommandForm.resources
