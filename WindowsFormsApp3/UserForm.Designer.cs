@@ -45,13 +45,16 @@
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Password = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button1 = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.BackColor = System.Drawing.Color.Transparent;
             this.panel2.Controls.Add(this.btnCancel);
             this.panel2.Controls.Add(this.label7);
             this.panel2.Controls.Add(this.IdBox);
@@ -63,7 +66,8 @@
             this.panel2.Controls.Add(this.label8);
             this.panel2.Controls.Add(this.label9);
             this.panel2.Controls.Add(this.insertName);
-            this.panel2.Location = new System.Drawing.Point(7, 63);
+            this.panel2.ForeColor = System.Drawing.SystemColors.Control;
+            this.panel2.Location = new System.Drawing.Point(7, 81);
             this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(414, 228);
@@ -95,12 +99,14 @@
             // 
             // IdBox
             // 
-            this.IdBox.BackColor = System.Drawing.SystemColors.Info;
+            this.IdBox.BackColor = System.Drawing.Color.Indigo;
+            this.IdBox.ForeColor = System.Drawing.Color.Indigo;
             this.IdBox.Location = new System.Drawing.Point(108, 127);
             this.IdBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.IdBox.Name = "IdBox";
             this.IdBox.Size = new System.Drawing.Size(132, 22);
             this.IdBox.TabIndex = 13;
+            this.IdBox.Visible = false;
             // 
             // btnSave
             // 
@@ -135,7 +141,7 @@
             // 
             this.btnUpdate.BackColor = System.Drawing.Color.Gold;
             this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdate.ForeColor = System.Drawing.Color.DimGray;
+            this.btnUpdate.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.btnUpdate.Location = new System.Drawing.Point(3, 156);
             this.btnUpdate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnUpdate.Name = "btnUpdate";
@@ -148,9 +154,11 @@
             // label6
             // 
             this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label6.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.label6.Location = new System.Drawing.Point(3, 92);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(67, 16);
+            this.label6.Size = new System.Drawing.Size(75, 18);
             this.label6.TabIndex = 11;
             this.label6.Text = "Password";
             // 
@@ -166,19 +174,24 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("MS Reference Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(3, 22);
+            this.label8.BackColor = System.Drawing.Color.Transparent;
+            this.label8.Cursor = System.Windows.Forms.Cursors.No;
+            this.label8.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label8.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.label8.Location = new System.Drawing.Point(-2, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(168, 22);
+            this.label8.Size = new System.Drawing.Size(193, 26);
             this.label8.TabIndex = 7;
             this.label8.Text = "Edit Department";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label9.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.label9.Location = new System.Drawing.Point(3, 54);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(70, 16);
+            this.label9.Size = new System.Drawing.Size(77, 18);
             this.label9.TabIndex = 6;
             this.label9.Text = "Username";
             // 
@@ -193,19 +206,19 @@
             // 
             // dgv
             // 
-            this.dgv.BackgroundColor = System.Drawing.Color.Beige;
+            this.dgv.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Username,
             this.Id,
             this.Password});
             this.dgv.GridColor = System.Drawing.SystemColors.AppWorkspace;
-            this.dgv.Location = new System.Drawing.Point(427, 0);
+            this.dgv.Location = new System.Drawing.Point(427, 81);
             this.dgv.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgv.Name = "dgv";
             this.dgv.RowHeadersWidth = 51;
             this.dgv.RowTemplate.Height = 24;
-            this.dgv.Size = new System.Drawing.Size(446, 451);
+            this.dgv.Size = new System.Drawing.Size(453, 291);
             this.dgv.TabIndex = 10;
             this.dgv.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellContentClick);
             this.dgv.DoubleClick += new System.EventHandler(this.dgv_DoubleClick);
@@ -239,7 +252,7 @@
             this.button1.BackColor = System.Drawing.SystemColors.Desktop;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button1.Location = new System.Drawing.Point(7, 12);
+            this.button1.Location = new System.Drawing.Point(15, 24);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(106, 34);
             this.button1.TabIndex = 11;
@@ -247,12 +260,34 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.DarkViolet;
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.button1);
+            this.panel1.Location = new System.Drawing.Point(0, -2);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(880, 78);
+            this.panel1.TabIndex = 12;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label1.Location = new System.Drawing.Point(327, 24);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(169, 32);
+            this.label1.TabIndex = 12;
+            this.label1.Text = "Users Form";
+            // 
             // UserForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(875, 450);
-            this.Controls.Add(this.button1);
+            this.BackColor = System.Drawing.Color.Indigo;
+            this.ClientSize = new System.Drawing.Size(878, 368);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.dgv);
             this.Controls.Add(this.panel2);
             this.Name = "UserForm";
@@ -261,6 +296,8 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -284,5 +321,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn Password;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label1;
     }
 }

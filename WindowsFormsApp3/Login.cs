@@ -41,5 +41,10 @@ namespace WindowsFormsApp3
             }
             else { MessageBox.Show("Password or username isn't right"); }
         }
-    }
+
+		private void textBox1_TextChanged(object sender, EventArgs e)
+		{
+
+		}
+	}
 }

@@ -101,8 +101,6 @@
     <Compile Include="UserForm.Designer.cs">
       <DependentUpon>UserForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Helpers\Enums.cs" />
-    <Compile Include="Helpers\Helper.cs" />
     <Compile Include="Helpers\MessageConstants.cs" />
     <Compile Include="Interfaces\IEntity.cs" />
     <Compile Include="Models\Command.cs">
@@ -227,6 +225,7 @@
       <DependentUpon>CompanyEntities.edmx</DependentUpon>
       <LastGenOutput>CompanyEntities.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\2577986.png" />
     <None Include="Resources\unnamed.jpg" />
     <None Include="Resources\689878.png" />
     <None Include="Resources\img_322567.png" />

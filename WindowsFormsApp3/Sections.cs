@@ -14,13 +14,13 @@ namespace WindowsFormsApp3
 {
     public partial class Sections : Form
     {
-        private readonly Models.User _appUser;
+        private readonly User _appUser;
 
         public Sections()
         {
             InitializeComponent();
         }
-        public Sections(Models.User appUser)
+        public Sections(User appUser)
         {
             InitializeComponent();
             _appUser = appUser;
@@ -55,5 +55,12 @@ namespace WindowsFormsApp3
             form5.Show();
             this.Close();
         }
-    }
+
+		private void button4_Click(object sender, EventArgs e)
+		{
+            CommandForm commandForm = new CommandForm();
+            commandForm.Show();
+            this.Close();
+		}
+	}
 }

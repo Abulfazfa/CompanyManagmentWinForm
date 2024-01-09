@@ -10,7 +10,5 @@ namespace Domain.Interfaces
     {
         int Id { get; set; }
         string Name { get; set; }
-       // public DateTime CreatingTime { get; set; }
-
     }
 }
