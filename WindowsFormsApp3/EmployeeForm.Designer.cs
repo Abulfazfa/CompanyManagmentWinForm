@@ -84,12 +84,12 @@
             this.Age,
             this.DepartmentName,
             this.CreatingTime});
-            this.dgv.Location = new System.Drawing.Point(-1, 61);
+            this.dgv.Location = new System.Drawing.Point(-4, 70);
             this.dgv.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgv.Name = "dgv";
             this.dgv.RowHeadersWidth = 51;
             this.dgv.RowTemplate.Height = 24;
-            this.dgv.Size = new System.Drawing.Size(1071, 187);
+            this.dgv.Size = new System.Drawing.Size(1071, 242);
             this.dgv.TabIndex = 0;
             this.dgv.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dgv.DoubleClick += new System.EventHandler(this.dgv_DoubleClick);
@@ -162,7 +162,7 @@
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.searchName);
-            this.panel1.Location = new System.Drawing.Point(539, 270);
+            this.panel1.Location = new System.Drawing.Point(528, 321);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(498, 314);
@@ -274,7 +274,7 @@
             this.panel2.Controls.Add(this.label8);
             this.panel2.Controls.Add(this.label9);
             this.panel2.Controls.Add(this.insertName);
-            this.panel2.Location = new System.Drawing.Point(12, 270);
+            this.panel2.Location = new System.Drawing.Point(12, 321);
             this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(475, 314);
@@ -471,7 +471,7 @@
             // 
             // button1
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.Desktop;
+            this.button1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.button1.Location = new System.Drawing.Point(16, 14);
@@ -489,7 +489,7 @@
             this.panel3.Controls.Add(this.button1);
             this.panel3.Location = new System.Drawing.Point(-4, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1240, 65);
+            this.panel3.Size = new System.Drawing.Size(1240, 73);
             this.panel3.TabIndex = 15;
             // 
             // label12
@@ -497,7 +497,7 @@
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft YaHei UI", 16.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label12.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label12.Location = new System.Drawing.Point(379, 9);
+            this.label12.Location = new System.Drawing.Point(377, 14);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(250, 37);
             this.label12.TabIndex = 0;
@@ -508,7 +508,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.ClientSize = new System.Drawing.Size(1049, 608);
+            this.ClientSize = new System.Drawing.Size(1049, 646);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);

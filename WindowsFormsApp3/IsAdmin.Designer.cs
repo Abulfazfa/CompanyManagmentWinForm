@@ -78,7 +78,7 @@
             this.submit.BackColor = System.Drawing.Color.Black;
             this.submit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.submit.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.submit.Location = new System.Drawing.Point(273, 168);
+            this.submit.Location = new System.Drawing.Point(188, 168);
             this.submit.Name = "submit";
             this.submit.Size = new System.Drawing.Size(121, 56);
             this.submit.TabIndex = 5;
@@ -89,11 +89,11 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Vineta BT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Red;
             this.label3.Location = new System.Drawing.Point(12, 24);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(618, 27);
+            this.label3.Size = new System.Drawing.Size(349, 25);
             this.label3.TabIndex = 10;
             this.label3.Text = "Enter admin\'s username and password";
             // 
@@ -101,7 +101,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(646, 236);
+            this.ClientSize = new System.Drawing.Size(462, 236);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
