@@ -40,7 +40,6 @@ namespace WindowsFormsApp3.Repositories
                 throw ex;
             }
         }
-
         public List<Command> GetAll(Func<Command, bool> predicate = null)
         {
             try

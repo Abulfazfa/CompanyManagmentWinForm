@@ -24,7 +24,6 @@ namespace DataAccess.Repositories
                 throw ex;
             }
         }
-
         public bool Delete(Department obj)
         {
             try
@@ -38,7 +37,6 @@ namespace DataAccess.Repositories
                 throw ex;
             }
         }
-
         public Department Get(Predicate<Department> predicate)
         {
             try
@@ -51,7 +49,6 @@ namespace DataAccess.Repositories
                 throw ex;
             }
         }
-
         public List<Department> GetAll(Func<Department, bool> predicate = null)
         {
             try
@@ -70,7 +67,6 @@ namespace DataAccess.Repositories
                 throw ex;
             }
         }
-
         public bool Update(Department obj)
         {
             try

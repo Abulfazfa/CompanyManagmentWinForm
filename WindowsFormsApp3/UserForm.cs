@@ -17,11 +17,13 @@ namespace WindowsFormsApp3
 	public partial class UserForm : Form
 	{
 		private readonly AppUserService appUserService;
+		private readonly User appUser;
 
-		public UserForm()
+		public UserForm(User user)
 		{
 			InitializeComponent();
 			appUserService = new AppUserService();
+			appUser = user;
 		}
 
 		private void dgv_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -147,7 +149,7 @@ namespace WindowsFormsApp3
 
 		private void button1_Click(object sender, EventArgs e)
 		{
-			Sections form2 = new Sections();
+			Sections form2 = new Sections(appUser);
 			form2.Show();
 			this.Close();
 		}

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp3.Models;
 using WindowsFormsApp3.Services;
 
 namespace WindowsFormsApp3
@@ -14,10 +15,12 @@ namespace WindowsFormsApp3
     public partial class IsAdmin : Form
     {
         private readonly AppUserService appUserService;
-        public IsAdmin()
+        private readonly User appUser;
+        public IsAdmin(User user)
         {
             InitializeComponent();
             appUserService = new AppUserService();
+            appUser = user;
         }
 
         private void submit_Click(object sender, EventArgs e)
@@ -27,7 +30,7 @@ namespace WindowsFormsApp3
             var appUser = appUserService.GetByName(username);
             if (appUser.Password == password)
             {
-                UserForm user = new UserForm();
+                UserForm user = new UserForm(appUser);
                 user.Show();
                 this.Close();
             }

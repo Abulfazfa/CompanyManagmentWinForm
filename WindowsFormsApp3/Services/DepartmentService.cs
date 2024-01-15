@@ -93,7 +93,7 @@ namespace Business.Services
             return false;
         }
 
-        public Department GetById(int id)
+        public Department GetById(int? id)
         {
             if (departmentReposity.Get(dep => dep.Id == id) != null)
             {               

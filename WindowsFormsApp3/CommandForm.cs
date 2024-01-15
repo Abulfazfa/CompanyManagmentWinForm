@@ -16,12 +16,13 @@ namespace WindowsFormsApp3
     public partial class CommandForm : Form
     {
 		private readonly CommandService _commandService;
-        public CommandForm()
+		private readonly User appUser;
+        public CommandForm(User user)
         {
             InitializeComponent();
 			_commandService = new CommandService();
 			PopulateDataGridView();
-
+			appUser = user;
 		}
 
 		private void btnSearch_Click(object sender, EventArgs e)
@@ -49,7 +50,7 @@ namespace WindowsFormsApp3
 
 		private void button1_Click(object sender, EventArgs e)
 		{
-			Sections form2 = new Sections();
+			Sections form2 = new Sections(appUser);
 			form2.Show();
 			this.Close();
 		}

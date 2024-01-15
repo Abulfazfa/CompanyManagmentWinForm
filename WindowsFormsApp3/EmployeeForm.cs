@@ -14,14 +14,14 @@ namespace WindowsFormsApp3
 	{
 		private readonly EmployeeService employeeService;
 		private readonly DepartmentService departmentService;
-		private readonly Models.User _user;
+		private readonly User _user;
 		private readonly CommandService _commandService;
-		public EmployeeForm()
-		{
-			InitializeComponent();
-			employeeService = new EmployeeService();
-			departmentService = new DepartmentService();
-		}
+		//public EmployeeForm()
+		//{
+		//	InitializeComponent();
+		//	employeeService = new EmployeeService();
+		//	departmentService = new DepartmentService();
+		//}
 
 		public EmployeeForm(User appUser)
 		{
@@ -64,7 +64,7 @@ namespace WindowsFormsApp3
 				insertName.Text = employee.Name;
 				insertAddress.Text = employee.Address;
 				insertAge.Text = employee.Age.ToString();
-				insertDepName.Text = employee.Department.Name;
+				insertDepName.Text = departmentService.GetById(employee.DepartmentId).Name;
 				insertSurname.Text = employee.Surname;
 				IdBox.Text = employee.EmployeeId.ToString();
 
@@ -73,9 +73,6 @@ namespace WindowsFormsApp3
 				btnDelete.Enabled = true;
 			}
 		}
-
-
-
 
 
 		void PopulateDataGridView()
@@ -90,7 +87,7 @@ namespace WindowsFormsApp3
 					employee.Surname,
 					employee.Address,
 					employee.Age,
-					DepartmentName = employee.Department.Name,
+					DepartmentName = departmentService.GetById(employee.DepartmentId).Name,
 					employee.CreatingTime
 				})
 				.ToList();
@@ -250,7 +247,7 @@ namespace WindowsFormsApp3
 
 		private void button1_Click(object sender, EventArgs e)
 		{
-			Sections form2 = new Sections();
+			Sections form2 = new Sections(_user);
 			form2.Show();
 			this.Close();
 		}

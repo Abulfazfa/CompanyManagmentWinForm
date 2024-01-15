@@ -16,10 +16,10 @@ namespace WindowsFormsApp3
     {
         private readonly User _appUser;
 
-        public Sections()
-        {
-            InitializeComponent();
-        }
+        //public Sections()
+        //{
+        //    InitializeComponent();
+        //}
         public Sections(User appUser)
         {
             InitializeComponent();
@@ -51,14 +51,14 @@ namespace WindowsFormsApp3
 
         private void button3_Click(object sender, EventArgs e)
         {
-            UserForm form5 = new UserForm();
+            UserForm form5 = new UserForm(_appUser);
             form5.Show();
             this.Close();
         }
 
 		private void button4_Click(object sender, EventArgs e)
 		{
-            CommandForm commandForm = new CommandForm();
+            CommandForm commandForm = new CommandForm(_appUser);
             commandForm.Show();
             this.Close();
 		}

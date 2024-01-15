@@ -16,10 +16,10 @@ namespace WindowsFormsApp3
 		private readonly DepartmentService departmentService;
 		private readonly User _user;
 		private readonly CommandRepository _commandService;
-		public DepartmentForm()
-		{
-			InitializeComponent();
-		}
+		//public DepartmentForm()
+		//{
+		//	InitializeComponent();
+		//}
 		public DepartmentForm(User appUser)
 		{
 			InitializeComponent();
@@ -91,7 +91,6 @@ namespace WindowsFormsApp3
 			Department existingDepartment = departmentService.Get(d => d.Name == name);
 			if (existingDepartment == null)
 			{
-
 				var result = departmentService.Create(new Department()
 				{
 					Name = name,
@@ -148,7 +147,17 @@ namespace WindowsFormsApp3
 		private void btnDelete_Click(object sender, EventArgs e)
 		{
 			int departmentId = int.Parse(IdBox.Text);
-			var departmentName = departmentService.GetById(departmentId).Name;
+			var department = departmentService.GetById(departmentId);
+			var departmentName = department.Name;
+			if (department.MemberCount > 0)
+			{
+				EmployeeService employeeService = new EmployeeService();
+				foreach (var item in department.Employees)
+				{
+                    employeeService.Delete(item.EmployeeId);
+                }
+				
+			}
 			var result = departmentService.Delete(departmentId);
 			btnSave.Enabled = true;
 			btnUpdate.Enabled = false;
@@ -168,7 +177,7 @@ namespace WindowsFormsApp3
 			if (!string.IsNullOrEmpty(searchName.Text))
 			{
 				string name = searchName.Text;
-				departments = departments.Where(d => d.Name == name).ToList();
+				departments = departments.Where(d => d.Name.ToLower().Contains(name.ToLower())).ToList();
 			}
 			if (!string.IsNullOrEmpty(searchCapacity.Text))
 			{
@@ -194,7 +203,7 @@ namespace WindowsFormsApp3
 
 		private void button1_Click(object sender, EventArgs e)
 		{
-			Sections form2 = new Sections();
+			Sections form2 = new Sections(_user);
 			form2.Show();
 			this.Close();
 		}

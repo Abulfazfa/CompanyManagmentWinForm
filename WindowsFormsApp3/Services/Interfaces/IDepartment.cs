@@ -12,7 +12,7 @@ namespace Business.Interfaces
         bool Create(Department department);
         bool Update(int id, Department department);
         bool Delete(int id);
-        Department GetById(int id);
+        Department GetById(int? id);
         List<Department> GetAll();
     }
 }

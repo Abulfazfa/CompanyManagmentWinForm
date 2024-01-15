@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 
 using System.Windows.Forms;
+using Utilities.Helpers;
 using WindowsFormsApp3.Models;
 
 namespace Business.Services
@@ -25,32 +26,29 @@ namespace Business.Services
                 if (employeeRepository.Get(emp => emp.Name.ToLower() == employee.Name.ToLower()) == null)
                 {
                     Department filtered = departmentReposity.Get(dep => dep.Id == employee.DepartmentId);
-                    if (filtered != null)
+                    if (filtered == null)
+                    {
+                        MessageBox.Show(MessageConstants.NoDepartment);
+                        return false;
+                    }
+                   
+                    if (filtered.MemberCount <= filtered.Capacity - 1)
                     {
                         filtered.MemberCount++;
                         departmentReposity.Update(filtered);
-                    }
-                    else
-                    {
-                        MessageBox.Show("There is no such department ");
-                        return false;
-                    }
-
-                    if (filtered.MemberCount <= filtered.Capacity)
-                    {
                         employee.CreatingTime = DateTime.Now;
                         return employeeRepository.Create(employee);
                     }
                     else
                     {
-                        MessageBox.Show("You exceeded the capacity limit");
+                        MessageBox.Show(MessageConstants.ExceededCapacity);
                         return false;
                     }
 
                 }
                 else
                 {
-                    MessageBox.Show("There is already a employee with that name and surname");
+                    MessageBox.Show(MessageConstants.ExistEmployeeNotice);
                     return false;
                 }
 
@@ -81,7 +79,6 @@ namespace Business.Services
                 throw ex;
             }
         }
-
         public List<Employee> GetAll(Func<Employee,bool> predicate = null)
         {
             return employeeRepository.GetAll(predicate);
@@ -106,7 +103,6 @@ namespace Business.Services
         {
             return employeeRepository.GetAll(predicate);
         }
-
         public bool Update(int id, Employee employee)
         {
             try
@@ -141,6 +137,7 @@ namespace Business.Services
                             {
                                 department.MemberCount--;
                                 department1.MemberCount++;
+                                departmentReposity.Update(department);
 
                                 filtered.DepartmentId = employee.DepartmentId;
                             }
@@ -149,14 +146,12 @@ namespace Business.Services
                                 MessageBox.Show("There isn't enough place in this department");
                                 return false;
                             }
-
                         }
                         employeeRepository.Update(filtered);
                         return true;
 
                     }
                     return false;
-
                 }
                 else
                 {
@@ -179,10 +174,6 @@ namespace Business.Services
                     employeeRepository.Update(filtered);
                     return true;
                 }
-
-
-
-
 
             }
             catch (Exception ex)
